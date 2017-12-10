@@ -47,7 +47,7 @@
 
     <div id="container">
       <div id="header">
-        <h3>[[itemData.id]]. [[_firstLetterUppercase(itemName)]]</h3>
+        <h3>[[itemName]]</h3>
         <h4>
           [[itemData.price]] / [[itemData.family_price]]kr
         </h4>
@@ -79,6 +79,12 @@
 
       ready(){
         super.ready();
+
+        this.itemName = this._firstLetterUppercase(this.itemName);
+
+        if(this.itemData.id != null){
+          this.itemName = this.itemData.id + ". " + this.itemName;
+        }
 
         if(this.itemData.spicy){
           this.itemName += " (Stark)";

@@ -14,11 +14,16 @@
       }
     </style>
 
-    <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+    <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
     <h2>Pizzor</h2>
     <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
       <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]"></sannes-group>
+    </template>
+
+    <h2>Övrigt</h2>
+    <template is="dom-repeat" items="[[others]]">
+      <sannes-group group-name="[[item.name]]" group-data="[[item.value]]"></sannes-group>
     </template>
 
   </template>
@@ -31,11 +36,33 @@
           ajaxResponse:{
             type: Object,
             notify: true
+          },
+          others:{
+            type: Array,
+            notify: true,
           }
         };
       }
 
+      _ajaxReponseUpdated(){
+        if(this.ajaxResponse == null){
+          return;
+        }
+
+        var outputObject = {};
+        outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
+        outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
+        outputObject["Grillat"] = this.ajaxResponse["roasts"];
+        outputObject["Pasta"] = this.ajaxResponse["pastas"];
+
+        this.set('others', this._toArray(outputObject));
+      }
+
       _toArray(obj){
+        if(obj == null){
+          return [];
+        }
+
         return Object.keys(obj).map(function(key){
           return {
             name: key,
