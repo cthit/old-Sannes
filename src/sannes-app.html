@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<link rel="import" href="sannes-group.html">
+
+<dom-module id="sannes-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+
+    <h2>Pizzor</h2>
+    <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+      <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]"></sannes-group>
+    </template>
+
+  </template>
+  <script>
+
+    class SannesApp extends Polymer.Element {
+      static get is() { return 'sannes-app'; }
+      static get properties() {
+        return {
+          ajaxResponse:{
+            type: Object,
+            notify: true
+          }
+        };
+      }
+
+      _toArray(obj){
+        return Object.keys(obj).map(function(key){
+          return {
+            name: key,
+            value: obj[key]
+          }
+        });
+      }
+    }
+
+    window.customElements.define(SannesApp.is, SannesApp);
+  </script>
+</dom-module>

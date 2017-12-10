@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="sannes-item.html">
+
+<dom-module id="sannes-group">
+  <template>
+    <style></style>
+
+    <h2>[[groupName]]</h2>
+    <template is="dom-repeat" items="[[_toArray(groupData)]]">
+      <sannes-item item-name="[[item.name]]" item-data="[[item.value]]"></sannes-item>
+    </template>
+
+  </template>
+  <script>
+    class SannesGroup extends Polymer.Element{
+      static get is() { return 'sannes-group'; }
+
+      static get properties() {
+        return {
+          groupName:{
+            type: String,
+            notify: true
+          },
+          groupData:{
+            type: Object,
+            notify: true
+          }
+        }
+      }
+
+      _toArray(obj){
+        return Object.keys(obj).map(function(key){
+          return {
+            name: key,
+            value: obj[key]
+          }
+        });
+      }
+    }
+
+    customElements.define(SannesGroup.is, SannesGroup);
+  </script>
+</dom-module>

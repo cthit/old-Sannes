@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="sannes-item">
+  <template>
+    <style></style>
+
+    <h3>[[itemName]]</h3>
+    <p>[[itemData.price]] / [[itemData.family_price]]kr</p>
+
+  </template>
+  <script>
+    class SannesItem extends Polymer.Element{
+      static get is() { return 'sannes-item'; }
+
+      static get properties() {
+        return {
+          itemName:{
+            type: String,
+            notify: true
+          },
+          itemData:{
+            type: Object,
+            notify: true
+          }
+        }
+      }
+    }
+
+    customElements.define(SannesItem.is, SannesItem);
+  </script>
+</dom-module>

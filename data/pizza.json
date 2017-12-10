@@ -743,7 +743,7 @@
 			}
 		}
 	},
-	"kebab rolls":{
+	"kebab_rolls":{
 		"kebabrulle standard":{
 			"type": "roll",
 			"veg": false,
@@ -847,7 +847,7 @@
 			],
 			"price": 85
 		},
-		"kebab i bröd":{
+		"kebab_i_bröd":{
 			"type": "plate",
 			"veg": false,
 			"spicy": false,
