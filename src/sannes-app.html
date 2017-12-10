@@ -12,19 +12,42 @@
       :host {
         display: block;
       }
+
+      #header{
+        height:80px;
+        line-height: 80px;
+        background-color: var(--google-blue-700);
+      }
+
+      #header > h1{
+        color:white;
+        text-align: center;
+        margin:0;
+      }
+
+      #content{
+        padding: 8px;
+      }
+
     </style>
 
     <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
-    <h2>Pizzor</h2>
-    <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-      <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]"></sannes-group>
-    </template>
+    <div id="header">
+      <h1>Sannes</h1>
+    </div>
+    <div id="content">
+      <h1>Pizzor</h1>
+      <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+        <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]"></sannes-group>
+      </template>
 
-    <h2>Övrigt</h2>
-    <template is="dom-repeat" items="[[others]]">
-      <sannes-group group-name="[[item.name]]" group-data="[[item.value]]"></sannes-group>
-    </template>
+      <h1>Övrigt</h1>
+      <template is="dom-repeat" items="[[others]]">
+        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]"></sannes-group>
+      </template>
+    </div>>
+
 
   </template>
   <script>
