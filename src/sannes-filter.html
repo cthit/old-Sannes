@@ -1,0 +1,108 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="sannes-itemfilter.html">
+
+<dom-module id="sannes-filter">
+  <template>
+    <style>
+      :host{
+      }
+    </style>
+
+    <h2>Filter</h2>
+    <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
+    <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
+    <div class="autocomplete-wrapper">
+      <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
+
+      <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
+    </div>
+
+    <div id="itemFiltersContainer">
+
+    </div>
+  </template>
+  <script>
+    class SannesFilter extends Polymer.Element{
+      static get is() { return 'sannes-filter'; }
+
+      static get properties() {
+        return {
+          ingredients:{
+            type: Array,
+            observer: '_ingredientsUpdated',
+            notify: true
+          },
+          showPizzas:{
+            type: Boolean,
+            notify: true
+          },
+          itemFilters:{
+            type: Array,
+            value: function(){
+              return [];
+            },
+            notify: true
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          '_renderItemFilters(itemFilters.splices)'
+        ]
+      }
+
+      _ingredientsUpdated(){
+        var autocompleteIngredients = [];
+        for(var i in this.ingredients){
+          autocompleteIngredients.push({
+            "text": this._firstLetterUppercase(this.ingredients[i]),
+            "value": this.ingredients[i]
+          });
+        }
+
+        this.$.autocompleteSuggestions.source = autocompleteIngredients;
+      }
+
+      ready(){
+        super.ready();
+
+        var self = this;
+        this.$.autocompleteSuggestions.addEventListener('autocomplete-selected', function (event) {
+          var selected = event.detail.text;
+          self.push("itemFilters", selected);
+        });
+      }
+
+      _renderItemFilters(change){
+        this.$.ingredientInput.value = "";
+        var self = this;
+        this.$.itemFiltersContainer.innerHTML = "";
+        for(var i in this.itemFilters){
+          var  itemFilter = document.createElement("sannes-itemfilter");
+          itemFilter.itemName = this.itemFilters[i];
+          itemFilter.addEventListener("itemFilterRemoved", function(e){
+            var index = self.itemFilters.indexOf(e.detail.itemName);
+            self.splice('itemFilters', index, 1);
+          });
+
+          this.$.itemFiltersContainer.appendChild(itemFilter);
+        }
+      }
+
+      _firstLetterUppercase(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+
+    }
+
+    customElements.define(SannesFilter.is, SannesFilter);
+  </script>
+</dom-module>

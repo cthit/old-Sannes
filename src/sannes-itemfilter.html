@@ -1,0 +1,48 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+
+<dom-module id="sannes-itemfilter">
+  <template>
+    <style>
+      :host{
+      }
+
+      #container{
+        display:flex;
+        justify-content: space-between;
+      }
+    </style>
+
+    <div id="container">
+      <div>
+        [[itemName]]
+      </div>
+      <paper-icon-button icon="cancel" on-tap="_removeItemFilter"></paper-icon-button>
+    </div>
+
+  </template>
+  <script>
+    class SannesItemfilter extends Polymer.Element{
+      static get is() { return 'sannes-itemfilter'; }
+
+      static get properties() {
+        return {
+          itemName:{
+            type: String,
+            notify: true,
+          },
+        }
+      }
+
+      _removeItemFilter(){
+        this.dispatchEvent(new CustomEvent('itemFilterRemoved', {detail: {itemName: this.itemName}}));
+      }
+    }
+
+    customElements.define(SannesItemfilter.is, SannesItemfilter);
+  </script>
+</dom-module>

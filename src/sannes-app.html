@@ -3,8 +3,10 @@
 
 <link rel="import" href="../../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 
 <link rel="import" href="sannes-group.html">
+<link rel="import" href="sannes-filter.html">
 
 <dom-module id="sannes-app">
   <template>
@@ -14,6 +16,7 @@
       }
 
       #header{
+        width:100%;
         height:80px;
         line-height: 80px;
         background-color: var(--google-blue-700);
@@ -25,8 +28,16 @@
         margin:0;
       }
 
+      #filter{
+        padding:24px;
+      }
+
       #content{
         padding: 8px;
+      }
+
+      .hidden{
+        display: none;
       }
 
     </style>
@@ -36,17 +47,22 @@
     <div id="header">
       <h1>Sannes</h1>
     </div>
-    <div id="content">
-      <h1>Pizzor</h1>
-      <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-        <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]"></sannes-group>
-      </template>
 
-      <h1>Övrigt</h1>
+
+    <div id="content">
+      <div id="filter">
+        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}"></sannes-filter>
+      </div>
+      <div id="pizzas">
+        <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters={{itemFilters}}></sannes-group>
+        </template>
+      </div>
+
       <template is="dom-repeat" items="[[others]]">
-        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]"></sannes-group>
+        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="{{itemFilters}}"></sannes-group>
       </template>
-    </div>>
+    </div>
 
 
   </template>
@@ -61,6 +77,19 @@
             notify: true
           },
           others:{
+            type: Array,
+            notify: true,
+          },
+          showPizzas:{
+            type: Boolean,
+            notify: true,
+            observer: '_showPizzasUpdated'
+          },
+          allIngredients:{
+            type: Array,
+            notify: true,
+          },
+          itemFilters:{
             type: Array,
             notify: true,
           }
@@ -79,6 +108,47 @@
         outputObject["Pasta"] = this.ajaxResponse["pastas"];
 
         this.set('others', this._toArray(outputObject));
+        this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
+      }
+
+      _getEveryUniqueIngredient(data){
+        return this._removeDuplicates(this._mergeToOneArray(this._getAllIngredients(data)));
+      }
+
+      _removeDuplicates(array){
+        return array.filter( function( item, index, inputArray ) {
+           return inputArray.indexOf(item) == index;
+         });
+      }
+
+      _mergeToOneArray(array) {
+        var  output = [];
+
+        array.forEach(item => {
+          if (Array.isArray(item)) {
+            output.push(...this._mergeToOneArray(item));
+          } else {
+            output.push(item);
+          }
+        });
+
+        return output;
+      }
+
+      _getAllIngredients(data){
+        var output = [];
+
+        for(var index in data){
+          if(data.hasOwnProperty(index) && data[index] instanceof Object) {
+            if(index == "ingredients"){
+              output.push(data[index]);
+            }else{
+              output.push(this._getAllIngredients(data[index]));
+            }
+          }
+        }
+
+        return output;
       }
 
       _toArray(obj){
@@ -92,6 +162,14 @@
             value: obj[key]
           }
         });
+      }
+
+      _showPizzasUpdated(){
+        if(!this.showPizzas){
+          this.$.pizzas.classList.add("hidden");
+        }else{
+          this.$.pizzas.classList.remove("hidden");
+        }
       }
     }
 
