@@ -2,10 +2,62 @@
 
 <dom-module id="sannes-item">
   <template>
-    <style></style>
+    <style>
 
-    <h3>[[itemName]]</h3>
-    <p>[[itemData.price]] / [[itemData.family_price]]kr</p>
+      #container{
+        @apply --shadow-elevation-2dp;
+        width:300px;
+        height:100px;
+        display: inline-block;
+        padding: 8px;
+        margin-right: 16px;
+        margin-bottom: 16px;
+        flex: 1;
+      }
+
+      .spicy{
+        background-color: var(--google-red-100);
+      }
+      .veg{
+        background-color: var(--google-green-100);
+      }
+
+      div{
+        display:inline-block;
+      }
+
+      #header{
+        width:100%;
+        display:flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+      }
+
+      #header > *{
+        display:inline-block;
+        margin:0;
+      }
+
+      #ingredients{
+        margin-bottom: 10px;
+      }
+
+    </style>
+
+    <div id="container">
+      <div id="header">
+        <h3>[[itemData.id]]. [[_firstLetterUppercase(itemName)]]</h3>
+        <h4>
+          [[itemData.price]] / [[itemData.family_price]]kr
+        </h4>
+      </div>
+      <div id="ingredients">
+        <template is="dom-repeat" items="[[itemData.ingredients]]">
+          [[_beautifyIngredient(index, item)]]
+        </template>
+      </div>
+    </div>
 
   </template>
   <script>
@@ -23,6 +75,47 @@
             notify: true
           }
         }
+      }
+
+      ready(){
+        super.ready();
+
+        if(this.itemData.spicy){
+          this.itemName += " (Stark)";
+          this.$.container.classList.add("spicy");
+        }
+
+        if(this.itemData.veg){
+          this.itemName += " (Veg)";
+          this.$.container.classList.add("veg");
+        }
+
+        switch(this.itemData.type){
+          case "baked":
+            this.itemName += " (Inbakad)";
+            break;
+          case "half_baked":
+            this.itemName += " (Halv inbakad)";
+            break;
+        }
+      }
+
+      _firstLetterUppercase(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      _beautifyIngredient(index, str){
+        var output = str;
+
+        if(index == 0){
+          output = this._firstLetterUppercase(output);
+        }
+
+        if(index != this.itemData.ingredients.length - 1){
+          output += ",";
+        }
+
+        return output;
       }
     }
 

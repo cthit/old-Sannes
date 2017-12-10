@@ -4,12 +4,27 @@
 
 <dom-module id="sannes-group">
   <template>
-    <style></style>
+    <style>
+      :host{
+        display: inline-block;
+        padding: 8px;
+        margin: 16px;
+      }
+
+      #items{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+    </style>
 
     <h2>[[groupName]]</h2>
-    <template is="dom-repeat" items="[[_toArray(groupData)]]">
-      <sannes-item item-name="[[item.name]]" item-data="[[item.value]]"></sannes-item>
-    </template>
+    <div id="items">
+      <template is="dom-repeat" items="[[_toArray(groupData)]]">
+        <sannes-item item-name="[[item.name]]" item-data="[[item.value]]"></sannes-item>
+      </template>
+    </div>
 
   </template>
   <script>
