@@ -50,9 +50,7 @@
     <div id="container">
       <div id="header">
         <h3>[[itemName]]</h3>
-        <h4>
-          [[itemData.price]] / [[itemData.family_price]]kr
-        </h4>
+        <h4>[[itemPrice]]</h4>
       </div>
       <div id="ingredients">
         <template is="dom-repeat" items="[[itemData.ingredients]]">
@@ -79,6 +77,10 @@
           itemFilters:{
             type: Array,
             notify: true
+          },
+          itemPrice:{
+            type: String,
+            notify: true
           }
         }
       }
@@ -86,6 +88,7 @@
       static get observers() {
         return [
           '_updateItemFilters(itemFilters.splices)',
+          '_updateItemPrice(itemData)'
         ]
       }
 
@@ -116,6 +119,12 @@
             this.itemName += " (Halv inbakad)";
             break;
         }
+      }
+
+      _updateItemPrice(){
+        this.itemPrice = this.itemData.price + ((this.itemData.family_price != null)
+          ? (" / " + this.itemData.family_price + "kr")
+          : ("kr"));
       }
 
       _firstLetterUppercase(str){
