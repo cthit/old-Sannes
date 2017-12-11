@@ -91,9 +91,9 @@
 
       static get observers() {
         return [
-          '_updateItemFilters(itemFilters.splices)',
-          '_updateItemPrice(itemData)',
-          '_updateMaxCostFilter(maxCost)'
+          '_updateFilter(itemFilters.splices)',
+          '_updateFilter(maxCost)',
+          '_updateItemPrice(itemData)'
         ]
       }
 
@@ -126,6 +126,30 @@
         }
       }
 
+      _updateFilter(){
+        var hidden = false;
+        for(var index in this.itemFilters){
+          var itemFilterData = this.itemFilters[index].toLowerCase();
+
+          if(!this.itemData.ingredients.includes(itemFilterData)){
+            hidden = true;
+            break;
+          }
+        }
+
+        if(this.maxCost < this.itemData.price
+            && (this.itemData.family_price == null
+              || this.maxCost < this.itemData.family_price)){
+          hidden = true;
+        }
+
+        if(hidden){
+          this.$.container.classList.add("hidden");
+        }else{
+          this.$.container.classList.remove("hidden");
+        }
+      }
+
       _updateMaxCostFilter(maxCost){
         console.log(maxCost);
       }
@@ -155,31 +179,7 @@
       }
 
       _updateItemFilters(change){
-        if(change == null){
-          return;
-        }
 
-        for(var changeIndex in change.indexSplices){
-          var changeData = change.indexSplices[changeIndex];
-
-          var addedArray = changeData.object;
-
-          var hidden = false;
-          for(var addedIndex in addedArray){
-            var added = addedArray[addedIndex].toLowerCase();
-            if(!this.itemData.ingredients.includes(added)){
-              hidden = true;
-              break;
-            }
-          }
-
-          if(hidden){
-            this.$.container.classList.add("hidden");
-          }else{
-            this.$.container.classList.remove("hidden");
-          }
-
-        }
       }
     }
 
