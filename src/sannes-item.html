@@ -81,6 +81,10 @@
           itemPrice:{
             type: String,
             notify: true
+          },
+          maxCost:{
+            type: Number,
+            notify: true,
           }
         }
       }
@@ -88,7 +92,8 @@
       static get observers() {
         return [
           '_updateItemFilters(itemFilters.splices)',
-          '_updateItemPrice(itemData)'
+          '_updateItemPrice(itemData)',
+          '_updateMaxCostFilter(maxCost)'
         ]
       }
 
@@ -119,6 +124,10 @@
             this.itemName += " (Halv inbakad)";
             break;
         }
+      }
+
+      _updateMaxCostFilter(maxCost){
+        console.log(maxCost);
       }
 
       _updateItemPrice(){

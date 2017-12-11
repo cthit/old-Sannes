@@ -47,17 +47,17 @@
 
     <div id="content">
       <div id="filter">
-        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}"></sannes-filter>
+        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}" max-cost="{{maxCost}}"></sannes-filter>
       </div>
       <h1 id="resultHeader" class="hidden">Resultat:</h1>
       <div id="pizzas">
         <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters={{itemFilters}}></sannes-group>
+          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]"></sannes-group>
         </template>
       </div>
 
       <template is="dom-repeat" items="[[others]]">
-        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="{{itemFilters}}"></sannes-group>
+        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="[[itemFilters]]" max-cost="[[maxCost]]"></sannes-group>
       </template>
     </div>
 
@@ -89,6 +89,10 @@
           itemFilters:{
             type: Array,
             notify: true,
+          },
+          maxCost:{
+            type: Number,
+            notify: true
           }
         };
       }

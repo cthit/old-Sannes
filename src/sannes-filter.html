@@ -22,11 +22,19 @@
       #itemFiltersContainer{
         margin-top:10px;
       }
+
+      #maxCostLabel{
+        max-width:130px;
+      }
+
     </style>
 
     <div id="container">
       <h2>Filter</h2>
       <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
+      <paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" max="230"  auto-validate error-message="Maxkostnat för någonting här är 230kr">
+        <div slot="suffix">kr</div>
+      </paper-input>
       <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
       <div class="autocomplete-wrapper">
         <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
@@ -54,6 +62,17 @@
             type: Boolean,
             notify: true
           },
+          maxCostString:{
+            type: String,
+            value : "",
+            notify:true,
+            observer: '_maxCostStringUpdated'
+          },
+          maxCost:{
+            type: Number,
+            value: -1,
+            notify: true
+          },
           itemFilters:{
             type: Array,
             value: function(){
@@ -68,6 +87,10 @@
         return [
           '_renderItemFilters(itemFilters.splices)'
         ]
+      }
+
+      _maxCostStringUpdated(){
+        this.maxCost = parseInt(this.maxCostString);
       }
 
       _ingredientsUpdated(){
