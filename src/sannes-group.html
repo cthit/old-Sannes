@@ -58,7 +58,7 @@
           maxCost:{
             type: Number,
             notify: true,
-            value: -1
+            value: NaN
           }
         }
       }
@@ -66,11 +66,12 @@
       static get observers() {
         return [
           '_updateItemFilters(itemFilters.splices)',
+          '_updateItemFilters(maxCost)'
         ]
       }
 
       _updateItemFilters(change){
-        if(this.itemFilters.length != 0){
+        if(this.itemFilters.length > 0 || !isNaN(this.maxCost)){
           this.$.header.classList.add("hidden");
         }else{
           this.$.header.classList.remove("hidden");
