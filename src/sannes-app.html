@@ -1,9 +1,9 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
 
-<link rel="import" href="../../bower_components/paper-styles/shadow.html">
-<link rel="import" href="../../bower_components/paper-styles/color.html">
-<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/paper-styles/shadow.html">
+<link rel="import" href="/bower_components/paper-styles/color.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
 
 <link rel="import" href="sannes-group.html">
 <link rel="import" href="sannes-filter.html">
@@ -17,8 +17,8 @@
 
       #header{
         width:100%;
-        height:80px;
-        line-height: 80px;
+        height:103px;
+        line-height: 103px;
         background-color: #44aedb;
       }
 
@@ -36,14 +36,17 @@
         display: none;
       }
 
+      footer > h4{
+        text-align:center;
+      }
+
     </style>
 
     <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
     <div id="header">
-      <h1>Sannes</h1>
+      <h1>🍕Sannes</h1>
     </div>
-
 
     <div id="content">
       <div id="filter">
@@ -61,6 +64,9 @@
       </template>
     </div>
 
+    <footer>
+      <h4>Think with Portals ❤</h4>
+    </footer>
 
   </template>
   <script>

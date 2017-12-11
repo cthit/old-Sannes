@@ -1,9 +1,9 @@
 
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
-<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
-<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
 
 <link rel="import" href="sannes-itemfilter.html">
 
@@ -36,15 +36,15 @@
         <div slot="suffix">kr</div>
       </paper-input>
       <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
+      <div id="itemFiltersContainer">
+
+      </div>
       <div class="autocomplete-wrapper">
         <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
 
         <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
       </div>
 
-      <div id="itemFiltersContainer">
-
-      </div>
     </div>
   </template>
   <script>
