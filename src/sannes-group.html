@@ -24,8 +24,10 @@
     </style>
 
     <h2 id="header">[[groupName]]</h2>
-    <div id="itemsContainer">
-
+    <div id="items">
+      <template is="dom-repeat" items="[[_toArray(groupData)]]">
+        <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-filters="[[itemFilters]]"></sannes-item>
+      </template>
     </div>
 
   </template>
@@ -45,6 +47,7 @@
           },
           itemFilters:{
             type: Array,
+            notify: true
           },
           items:{
             type: Array,
@@ -55,43 +58,13 @@
         }
       }
 
-      static get observers() {
-        return [
-          '_updateItemFilters(itemFilters.splices)',
-          '_renderItems(groupData)'
-        ]
-      }
-
-      _renderItems(groupData){
-        this.$.itemsContainer.innerHTML = "";
-        this.set("items", []);
-
-        for(var itemName in groupData){
-          var itemData = groupData[itemName];
-          var itemElement = document.createElement("sannes-item");
-          itemElement.itemName = itemName;
-          itemElement.itemData = itemData;
-
-          this.$.itemsContainer.appendChild(itemElement);
-          this.items.push(itemElement);
-        }
-      }
-
-      _updateItemFilters(change){
-        if(change == null){
-          return;
-        }
-
-        for(var changeIndex in change.indexSplices){
-          var changeData = change.indexSplices[changeIndex];
-
-          var addedArray = changeData.object;
-
-          for(var addedIndex in addedArray){
-            var added = addedArray[addedIndex];
-            console.log(added + " is in the filters");
+      _toArray(obj){
+        return Object.keys(obj).map(function(key){
+          return {
+            name: key,
+            value: obj[key]
           }
-        }
+        });
       }
     }
 
