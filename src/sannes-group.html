@@ -47,7 +47,7 @@
           },
           itemFilters:{
             type: Array,
-            notify: true
+            notify: true,
           },
           items:{
             type: Array,
@@ -56,6 +56,24 @@
             }
           },
         }
+      }
+
+      static get observers() {
+        return [
+          '_updateItemFilters(itemFilters.splices)',
+        ]
+      }
+
+      _updateItemFilters(change){
+        if(this.itemFilters.length != 0){
+          this.$.header.classList.add("hidden");
+        }else{
+          this.$.header.classList.remove("hidden");
+        }
+      }
+
+      ready(){
+        super.ready();
       }
 
       _toArray(obj){

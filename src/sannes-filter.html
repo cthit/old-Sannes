@@ -12,19 +12,31 @@
     <style>
       :host{
       }
+
+      #container{
+        @apply --shadow-elevation-2dp;
+        padding:24px;
+
+      }
+
+      #itemFiltersContainer{
+        margin-top:10px;
+      }
     </style>
 
-    <h2>Filter</h2>
-    <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
-    <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
-    <div class="autocomplete-wrapper">
-      <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
+    <div id="container">
+      <h2>Filter</h2>
+      <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
+      <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
+      <div class="autocomplete-wrapper">
+        <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
 
-      <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
-    </div>
+        <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
+      </div>
 
-    <div id="itemFiltersContainer">
+      <div id="itemFiltersContainer">
 
+      </div>
     </div>
   </template>
   <script>

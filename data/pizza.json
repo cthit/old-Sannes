@@ -6,9 +6,7 @@
 				"type": "pizza",
 				"veg": true,
 				"spicy": false,
-				"ingredients":[
-					"tomatsås", "ost"
-				],
+				"ingredients":[],
 				"price": 70,
 				"family_price": 160
 			},

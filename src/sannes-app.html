@@ -28,10 +28,6 @@
         margin:0;
       }
 
-      #filter{
-        padding:24px;
-      }
-
       #content{
         padding: 8px;
       }
@@ -53,6 +49,7 @@
       <div id="filter">
         <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}"></sannes-filter>
       </div>
+      <h1 id="resultHeader" class="hidden">Resultat:</h1>
       <div id="pizzas">
         <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
           <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters={{itemFilters}}></sannes-group>
@@ -94,6 +91,20 @@
             notify: true,
           }
         };
+      }
+
+      static get observers() {
+        return [
+          '_updateItemFilters(itemFilters.splices)',
+        ]
+      }
+
+      _updateItemFilters(change){
+        if(this.itemFilters.length == 0){
+          this.$.resultHeader.classList.add("hidden");
+        }else{
+          this.$.resultHeader.classList.remove("hidden");
+        }
       }
 
       _ajaxReponseUpdated(){
