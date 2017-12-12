@@ -32,12 +32,20 @@
         padding: 8px;
       }
 
-      .hidden{
-        display: none;
-      }
 
       footer > h4{
         text-align:center;
+      }
+
+      .flexContainer{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .hidden{
+        display: none !important;
       }
 
     </style>
@@ -53,15 +61,24 @@
         <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}" max-cost="{{maxCost}}"></sannes-filter>
       </div>
       <h1 id="resultHeader" class="hidden">Resultat:</h1>
-      <div id="pizzas">
+
+      <div id="resultContainer" class="flexContainer hidden">
+        <template is="dom-repeat" items="[[allItems]]">
+          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]"></sannes-item>
+        </template>
+      </div>
+
+      <div id="pizzasContainer">
         <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
           <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]"></sannes-group>
         </template>
       </div>
 
-      <template is="dom-repeat" items="[[others]]">
-        <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="[[itemFilters]]" max-cost="[[maxCost]]"></sannes-group>
-      </template>
+      <div id="otherContainer">
+        <template is="dom-repeat" items="[[others]]">
+          <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="[[itemFilters]]" max-cost="[[maxCost]]"></sannes-group>
+        </template>
+      </div>
     </div>
 
     <footer>
@@ -100,6 +117,12 @@
             type: Number,
             notify: true,
             value: NaN
+          },
+          allItems:{
+            type: Array,
+            value: function(){
+              return []
+            }
           }
         };
       }
@@ -118,9 +141,15 @@
 
       _updateResultHeaderHidden(){
         if(this.itemFilters.length > 0 || !isNaN(this.maxCost)){
+          this.$.resultContainer.classList.remove("hidden");
           this.$.resultHeader.classList.remove("hidden");
+          this.$.pizzasContainer.classList.add("hidden");
+          this.$.otherContainer.classList.add("hidden");
         }else{
+          this.$.resultContainer.classList.add("hidden");
           this.$.resultHeader.classList.add("hidden");
+          this.$.pizzasContainer.classList.remove("hidden");
+          this.$.otherContainer.classList.remove("hidden");
         }
       }
 
@@ -129,14 +158,36 @@
           return;
         }
 
-        var outputObject = {};
-        outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
-        outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
-        outputObject["Grillat"] = this.ajaxResponse["roasts"];
-        outputObject["Pasta"] = this.ajaxResponse["pastas"];
-
-        this.set('others', this._toArray(outputObject));
+        this.set('allItems', this._getAllItems());
+        this.set('others', this._toArray(this._getOtherItemGroups()));
         this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
+
+      }
+
+      _getAllItems(){
+        var allItems = {};
+        var allGroups = this._getOtherItemGroups();
+
+        for(var pizzaGroupIndex in this.ajaxResponse.pizzas){
+          allGroups[pizzaGroupIndex] = this.ajaxResponse.pizzas[pizzaGroupIndex];
+        }
+
+        for(var groupIndex in allGroups){
+          for(var itemName in allGroups[groupIndex]){
+            allItems[itemName] = (allGroups[groupIndex][itemName]);
+          }
+        }
+
+        return this._toArray(allItems);
+      }
+
+      _getOtherItemGroups(){
+          var outputObject = {};
+          outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
+          outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
+          outputObject["Grillat"] = this.ajaxResponse["roasts"];
+          outputObject["Pasta"] = this.ajaxResponse["pastas"];
+          return outputObject;
       }
 
       _getEveryUniqueIngredient(data){
@@ -194,9 +245,9 @@
 
       _showPizzasUpdated(){
         if(!this.showPizzas){
-          this.$.pizzas.classList.add("hidden");
+          this.$.pizzasContainer.classList.add("hidden");
         }else{
-          this.$.pizzas.classList.remove("hidden");
+          this.$.pizzasContainer.classList.remove("hidden");
         }
       }
     }

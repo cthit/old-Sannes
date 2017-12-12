@@ -151,9 +151,9 @@
       }
 
       _updateItemPrice(){
-        this.itemPrice = this.itemData.price + ((this.itemData.family_price != null)
+        this.itemPrice = this.itemData.price + "kr" + ((this.itemData.family_price != null)
           ? (" / " + this.itemData.family_price + "kr")
-          : ("kr"));
+          : "");
       }
 
       _firstLetterUppercase(str){
