@@ -17,7 +17,7 @@
         background-color: var(--google-red-100);
       }
       .veg{
-        background-color: var(--google-green-100);
+      /*  background-color: var(--google-green-100);*/
       }
 
       div{
@@ -112,7 +112,7 @@
         }
 
         if(this.itemData.veg){
-          this.itemName += " (Veg)";
+          this.itemName += " (Veg 🥗)";
           this.$.container.classList.add("veg");
         }
 
@@ -168,7 +168,7 @@
         }
 
         if(index != this.itemData.ingredients.length - 1){
-          output += ",";
+          output += ", ";
         }
 
         return output;
