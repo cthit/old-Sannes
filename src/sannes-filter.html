@@ -34,10 +34,15 @@
         }
       }
 
+      #containerHeader{
+        margin-top:0px;
+        margin-bottom:20px;
+      }
+
     </style>
 
     <div id="container">
-      <h2>Filter</h2>
+      <h2 id="containerHeader">Filter</h2>
       <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
       <paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" max="230"  auto-validate error-message="Maxkostnat för någonting här är 230kr">
         <div slot="suffix">kr</div>

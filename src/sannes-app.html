@@ -231,6 +231,10 @@
           if(data.hasOwnProperty(index) && data[index] instanceof Object) {
             if(index == "ingredients"){
               output.push(data[index]);
+
+              if('hidden_ingredients' in data){
+                output.push(data['hidden_ingredients']);
+              }
             }else{
               output.push(this._getAllIngredients(data[index]));
             }

@@ -7,6 +7,9 @@
 				"veg": true,
 				"spicy": false,
 				"ingredients":[],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 70,
 				"family_price": 160
 			},
@@ -17,6 +20,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 75,
 				"family_price": 170
@@ -29,6 +35,9 @@
 				"ingredients":[
 					"champinjoner"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 75,
 				"family_price": 170
 			},
@@ -39,6 +48,9 @@
 				"spicy": false,
 				"ingredients":[
 					"köttfärs"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 75,
 				"family_price": 170
@@ -53,6 +65,9 @@
 				"ingredients":[
 					"skinka", "ananas"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 80,
 				"family_price": 180
 			},
@@ -63,6 +78,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "champinjoner"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 80,
 				"family_price": 180
@@ -75,6 +93,9 @@
 				"ingredients":[
 					"skinka", "paprika"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 80,
 				"family_price": 180
 			},
@@ -85,6 +106,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 80,
 				"family_price": 180
@@ -97,6 +121,9 @@
 				"ingredients":[
 					"skinka", "bacon", "curry"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 80,
 				"family_price": 180
 			},
@@ -107,6 +134,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "räkor"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 80,
 				"family_price": 180
@@ -119,6 +149,9 @@
 				"ingredients":[
 					"räkor", "musslor"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 80,
 				"family_price": 180
 			},
@@ -129,6 +162,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "tonfisk"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 80,
 				"family_price": 180
@@ -143,6 +179,9 @@
 				"ingredients":[
 					"köttfärssås", "tacokryddmix", "jalapeño", "lök", "vitlök", "tacosås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -153,6 +192,9 @@
 				"spicy": false,
 				"ingredients":[
 					"kebabkött", "feferoni", "mild kebabsås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -165,6 +207,9 @@
 				"ingredients":[
 					"köttärs", "vitlök", "feferoni", "paprika", "lök"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -175,6 +220,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "räkor", "ananas"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -187,6 +235,9 @@
 				"ingredients":[
 					"champinjoner", "kronärtskocka", "oliver", "paprika", "lök"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -197,6 +248,9 @@
 				"spicy": false,
 				"ingredients":[
 					"kyckling", "champinjoner", "lök", "vitlökssås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -209,6 +263,9 @@
 				"ingredients":[
 					"salami", "champinjoner", "feferoni", "lök"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -219,6 +276,9 @@
 				"spicy": false,
 				"ingredients":[
 					"champinjoner", "vitlök", "oliver", "fetaost", "lök"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -231,6 +291,9 @@
 				"ingredients":[
 					"skinka", "köttfärs", "bearnaisesås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -241,6 +304,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "räkor", "champinjoner", "kronärtskocka"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -253,6 +319,9 @@
 				"ingredients":[
 					"skinka", "köttfärs", "lök"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -263,6 +332,9 @@
 				"spicy": false,
 				"ingredients":[
 					"banan", "ananas", "curry", "jordnötter"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -275,6 +347,9 @@
 				"ingredients":[
 					"skinka", "ananas", "champinjoner"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -286,6 +361,9 @@
 				"ingredients":[
 					"lök", "skinka", "bacon", "ägg"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 85,
 				"family_price": 190
 			},
@@ -296,6 +374,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "jalapeño", "tacokryddmix", "tacosås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 85,
 				"family_price": 190
@@ -310,6 +391,9 @@
 				"ingredients":[
 					"oxfilé", "champinjoner", "jalapeño", "lök", "tacokryddmix", "färsk vitlök", "tacosås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -320,6 +404,9 @@
 				"spicy": false,
 				"ingredients":[
 					"champinjoner", "kronärtskocka", "oliver", "vitlök", "färska tomater", "paprika", "feferoni"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -332,6 +419,9 @@
 				"ingredients":[
 					"kyckling", "banan", "ananas", "jordnötter", "curry"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -342,6 +432,9 @@
 				"spicy": false,
 				"ingredients":[
 					"oxfilé", "champinjoner", "lök", "vitlök"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -354,6 +447,9 @@
 				"ingredients":[
 					"oxfilé", "ägg", "bearnaisesås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -364,6 +460,9 @@
 				"spicy": false,
 				"ingredients":[
 					"oxfilé", "banan", "ananas", "jordnötter", "curry"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -376,6 +475,9 @@
 				"ingredients":[
 					"skinka", "oxfilé", "bearnaisesås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -386,6 +488,9 @@
 				"spicy": false,
 				"ingredients":[
 					"oxfilé", "vitlök", "färska tomater", "lök", "bearnaisesås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -398,6 +503,9 @@
 				"ingredients":[
 					"oxfilé", "vitlök", "feferoni", "lök", "fetaost"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -408,6 +516,9 @@
 				"spicy": false,
 				"ingredients":[
 					"kebabkött", "feferoni", "champinjoner", "lök", "mild kebabsås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -422,6 +533,9 @@
 				"ingredients":[
 					"kebabkött", "feferoni", "fetaost", "lök", "mild kebabsås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 89,
 				"family_price": 200
 			},
@@ -432,6 +546,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "oxfilé", "köttfärs", "vitlök"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 89,
 				"family_price": 200
@@ -444,6 +561,9 @@
 				"ingredients":[
 					"oxfilé", "champinjoner", "färska tomater", "gorgonzolaost"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 95,
 				"family_price": 210
 			},
@@ -454,6 +574,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "kebabkött", "bacon", "lök", "champinjoner", "mild kebabsås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 95,
 				"family_price": 210
@@ -466,6 +589,9 @@
 				"ingredients":[
 					"oxfilé", "champinjoner", "vitlök", "gorgonzolaost", "bearnaisesås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 95,
 				"family_price": 210
 			},
@@ -476,6 +602,9 @@
 				"spicy": false,
 				"ingredients":[
 					"oxfilé", "gorgonzolaost", "bearnaisesås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 95,
 				"family_price": 210
@@ -488,6 +617,9 @@
 				"ingredients":[
 					"kebabkött", "feferoni", "gurka", "färska tomater", "isbergssallad", "mild kebabsås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 95,
 				"family_price": 210
 			},
@@ -498,6 +630,9 @@
 				"spicy": false,
 				"ingredients":[
 					"lufttorkad skinka", "färsk basilika", "mozzarellaost", "olivolja"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 95,
 				"family_price": 210
@@ -510,6 +645,9 @@
 				"ingredients":[
 					"skinka", "oxfilé", "räkor", "vitlök", "lök", "bearnaisesås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 95,
 				"family_price": 210
 			},
@@ -520,6 +658,9 @@
 				"spicy": false,
 				"ingredients":[
 					"kyckling", "räkor", "champinjoner", "lök", "vitlök", "bearnaisesås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 95,
 				"family_price": 210
@@ -532,6 +673,9 @@
 				"ingredients":[
 					"champinjoner", "fetaost", "paprika", "gorgonzolaost", "vitlökssås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 95,
 				"family_price": 210
 			},
@@ -542,6 +686,9 @@
 				"spicy": false,
 				"ingredients":[
 					"färsk basilika", "gorgonzolaost", "mozzarellaost", "fetaost"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 95,
 				"family_price": 210
@@ -556,6 +703,9 @@
 				"ingredients":[
 					"skinka", "kebabkött", "lök", "pommes frites", "mild kebabsås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 99,
 				"family_price": 220
 			},
@@ -566,6 +716,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "oxfilé", "köttfärs", "bacon", "vitlök", "lök"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 99,
 				"family_price": 220
@@ -578,6 +731,9 @@
 				"ingredients":[
 					"skinka", "kebabkött", "champinjoner", "vitlök", "jalapeño", "tacomix", "tacosås", "kebabsås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 99,
 				"family_price": 220
 			},
@@ -588,6 +744,9 @@
 				"spicy": false,
 				"ingredients":[
 					"lufttorkad skinka", "vitlök", "oliver", "färsk basilika", "färska tomater", "lök", "gorgonzolaost", "mozzarellaost", "olivolja"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 99,
 				"family_price": 220
@@ -600,6 +759,9 @@
 				"ingredients":[
 					"lufttorkad skinka", "vitlök", "färsk basilika", "lök", "gorgonzolaost", "mozzarellaost", "olivolja"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 99,
 				"family_price": 220
 			},
@@ -611,6 +773,9 @@
 				"ingredients":[
 					"lufttorkad skinka", "vitlök", "oliver", "lök", "färsk basilika", "fetaost", "mozzarellaost", "olivolja"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 99,
 				"family_price": 220
 			},
@@ -621,6 +786,9 @@
 				"spicy": false,
 				"ingredients":[
 					"lufttorkad skinka", "färsk basilika", "mozzarellaost", "pesto"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 99,
 				"family_price": 220
@@ -635,6 +803,9 @@
 				"ingredients":[
 					"skinka", "kebabkött", "salami", "bacon", "jalapeño", "mild kebabsås"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 105,
 				"family_price": 230
 			},
@@ -645,6 +816,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "lök", "jalapeño", "kyckling", "köttfärs", "bacon", "oxfilé", "mozzarellaost", "stark vitlökssås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 105,
 				"family_price": 230
@@ -657,6 +831,9 @@
 				"ingredients":[
 					"kräftstjärtar", "räkor", "musslor", "färsk basilika", "scampi", "färsk vitlök"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 105,
 				"family_price": 230
 			},
@@ -668,6 +845,9 @@
 				"ingredients":[
 					"skinka", "kräftstjärtar", "färsk basilika", "vitlök", "oliver", "fetaost"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 105,
 				"family_price": 230
 			},
@@ -678,6 +858,9 @@
 				"spicy": false,
 				"ingredients":[
 					"skinka", "köttfärs", "oxfilé", "bacon", "champinjoner", "ananas", "bearnaisesås"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 105,
 				"family_price": 230
@@ -692,6 +875,9 @@
 				"ingredients":[
 					"mozzarellaost", "paprika", "salami", "oxfilé", "soltorkade tomater", "vitlök", "ruccola"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 110,
 				"family_price": 230
 			},
@@ -702,6 +888,9 @@
 				"spicy": false,
 				"ingredients":[
 					"mozzarellaost", "scampi", "champinjoner", "oxfilé", "soltorkade tomater", "vitlök", "ruccola"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 110,
 				"family_price": 230
@@ -714,6 +903,9 @@
 				"ingredients":[
 					"mozzarellaost", "parmaskinka", "salami", "oliver", "vitlök", "soltorkade tomater", "ruccola"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 110,
 				"family_price": 230
 			},
@@ -725,6 +917,9 @@
 				"ingredients":[
 					"mozzarellaost", "kyckling", "champinjoner", "soltorkade tomater", "pesto", "fetaost", "ruccola"
 				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
+				],
 				"price": 110,
 				"family_price": 230
 			},
@@ -735,6 +930,9 @@
 				"spicy": false,
 				"ingredients":[
 					"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+				],
+				"hidden_ingredients": [
+					"tomatsås", "ost"
 				],
 				"price": 110,
 				"family_price": 230
@@ -749,6 +947,9 @@
 			"ingredients":[
 				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
 			],
+			"hidden_ingredients": [
+				"bröd"
+			],
 			"price": 80
 		},
 		"falafelrulle":{
@@ -757,6 +958,9 @@
 			"spicy": false,
 			"ingredients":[
 				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+			],
+			"hidden_ingredients": [
+				"bröd"
 			],
 			"price": 85
 		},
@@ -767,6 +971,9 @@
 			"ingredients":[
 				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
 			],
+			"hidden_ingredients": [
+				"bröd"
+			],
 			"price": 85
 		},
 		"kycklingrulle":{
@@ -775,6 +982,9 @@
 			"spicy": false,
 			"ingredients":[
 				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+			],
+			"hidden_ingredients": [
+				"bröd"
 			],
 			"price": 85
 		}
@@ -787,6 +997,9 @@
 			"ingredients":[
 				"ost", "skinka", "ananas", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
+			"hidden_ingredients": [
+				"bröd"
+			],
 			"price": 80
 		},
 		"kyckling-salladsburgare":{
@@ -795,6 +1008,9 @@
 			"spicy": false,
 			"ingredients":[
 				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+			],
+			"hidden_ingredients": [
+				"bröd"
 			],
 			"price": 80
 		},
@@ -805,6 +1021,9 @@
 			"ingredients":[
 				"fårost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
+			"hidden_ingredients": [
+				"bröd"
+			],
 			"price": 80
 		},
 		"alfaburgare":{
@@ -813,6 +1032,9 @@
 			"spicy": false,
 			"ingredients":[
 				"ost", "skinka", "kebabkött", "ananas", "majs", "gurka", "färska tomater", "lök", "isbergssallad", "valfri sås"
+			],
+			"hidden_ingredients": [
+				"bröd"
 			],
 			"price": 80
 		}
@@ -872,6 +1094,9 @@
 			"ingredients":[
 				"bacon", "äggula", "svartpeppar", "gräddsås"
 			],
+			"hidden_ingredients": [
+				"pasta"
+			],
 			"price": 80
 		},
 		"vegetale":{
@@ -880,6 +1105,9 @@
 			"spicy": false,
 			"ingredients":[
 				"champinjoner", "tomat", "strimlad feferoni", "fetaost", "lök", "gräddsås", "tomatsås"
+			],
+			"hidden_ingredients": [
+				"pasta"
 			],
 			"price": 85
 		},
@@ -890,6 +1118,9 @@
 			"ingredients":[
 				"kyckling", "banan", "ananas", "jordnötter", "curry"
 			],
+			"hidden_ingredients": [
+				"pasta"
+			],
 			"price": 85
 		},
 		"bolognese":{
@@ -899,6 +1130,9 @@
 			"ingredients":[
 				"köttfärssås"
 			],
+			"hidden_ingredients": [
+				"pasta"
+			],
 			"price": 80
 		},
 		"havets pasta":{
@@ -907,6 +1141,9 @@
 			"spicy": false,
 			"ingredients":[
 				"kräftstjärtar", "räkor", "vitlök", "rödlök", "scampi", "gräddsås"
+			],
+			"hidden_ingredients": [
+				"pasta"
 			],
 			"price": 100
 		}

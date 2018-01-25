@@ -137,7 +137,8 @@
         for(var index in this.itemFilters){
           var itemFilterData = this.itemFilters[index].toLowerCase();
 
-          if(!this.itemData.ingredients.includes(itemFilterData)){
+          if(!this.itemData.ingredients.includes(itemFilterData)
+              && ('hidden_ingredients' in this.itemData && !this.itemData.hidden_ingredients.includes(itemFilterData))){
             hidden = true;
             break;
           }
