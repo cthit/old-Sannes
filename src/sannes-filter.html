@@ -10,13 +10,10 @@
 <dom-module id="sannes-filter">
   <template>
     <style>
-      :host{
-      }
-
       #container{
         @apply --shadow-elevation-2dp;
         padding:24px;
-
+        background-color: white;
       }
 
       #itemFiltersContainer{
@@ -25,6 +22,16 @@
 
       #maxCostLabel{
         max-width:130px;
+      }
+
+      #ingredientsContainer{
+        max-width:300px;
+      }
+
+      #autocompleteSuggestions{
+        --suggestions-wrapper:{
+          max-width:300px;
+        }
       }
 
     </style>
@@ -36,6 +43,7 @@
         <div slot="suffix">kr</div>
       </paper-input>
       <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
+      <div id="ingredientsContainer">
       <div id="itemFiltersContainer">
 
       </div>
@@ -44,7 +52,7 @@
 
         <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
       </div>
-
+    </div>
     </div>
   </template>
   <script>

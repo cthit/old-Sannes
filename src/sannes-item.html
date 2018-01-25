@@ -11,6 +11,7 @@
         padding: 8px;
         margin-right: 16px;
         margin-bottom: 16px;
+        background-color: white;
       }
 
       .spicy{
@@ -85,6 +86,10 @@
           maxCost:{
             type: Number,
             notify: true,
+          },
+          showPizzas:{
+            type: Boolean,
+            notify: true
           }
         }
       }
@@ -93,6 +98,7 @@
         return [
           '_updateFilter(itemFilters.splices)',
           '_updateFilter(maxCost)',
+          '_updateFilter(showPizzas)',
           '_updateItemPrice(itemData)'
         ]
       }
@@ -140,6 +146,14 @@
         if(this.maxCost < this.itemData.price
             && (this.itemData.family_price == null
               || this.maxCost < this.itemData.family_price)){
+          hidden = true;
+        }
+
+        console.log(this.itemData.type + "; " + this.showPizzas);
+
+        const type = this.itemData.type.toLowerCase();
+
+        if((type == "pizza" || type == "half_baked" || type == "baked") && this.showPizzas != undefined && !this.showPizzas){
           hidden = true;
         }
 

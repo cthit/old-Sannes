@@ -30,11 +30,21 @@
 
       #content{
         padding: 8px;
+        background-color: #F7F7F7;
+        padding-left:10%;
+        padding-right:10%;
       }
 
+      footer{
+        background-color: #F7F7F7;
+        height:20px;
+        padding:20px;
+      }
 
       footer > h4{
         text-align:center;
+        margin:0px;
+        line-height:20px;
       }
 
       .flexContainer{
@@ -64,7 +74,7 @@
 
       <div id="resultContainer" class="flexContainer hidden">
         <template is="dom-repeat" items="[[allItems]]">
-          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]"></sannes-item>
+          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]" show-pizzas=[[showPizzas]]></sannes-item>
         </template>
       </div>
 
