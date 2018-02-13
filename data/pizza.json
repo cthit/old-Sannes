@@ -1,4 +1,30 @@
 {
+	"alias":{
+		"sallad": "salad",
+		"sallader": "salad",
+		"hamburgare": "hamburger",
+		"rulle": "roll",
+		"rullar": "roll",
+		"tallrik": "plate",
+		"tallrikar": "plate",
+		"tomater": "färska tomater",
+		"färska tomater": "tomater",
+		"sås": [
+			"bearnaisesås",
+			"mild kebabsås",
+			"tacosås",
+			"stark vitlökssås",
+			"vitlökssås",
+			"stark kebabsås"
+		],
+		"vitlökssås": "stark vitlöksås",
+		"pizza":[
+			"half_baked",
+			"baked"
+		],
+		"halvinbakad": "half_baked",
+		"inbakad": "baked"
+	},
 	"pizzas":{
 		"1":{
 			"margherita":{

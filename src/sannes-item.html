@@ -14,13 +14,6 @@
         background-color: white;
       }
 
-      .spicy{
-        background-color: var(--google-red-100);
-      }
-      .veg{
-      /*  background-color: var(--google-green-100);*/
-      }
-
       div{
         display:inline-block;
       }
@@ -50,7 +43,7 @@
 
     <div id="container">
       <div id="header">
-        <h3>[[itemName]]</h3>
+        <h3>[[itemHeader]]</h3>
         <h4>[[itemPrice]]</h4>
       </div>
       <div id="ingredients">
@@ -71,34 +64,38 @@
             type: String,
             notify: true
           },
-          itemData:{
+					itemHeader:{
+						type: String,
+						notify: true,
+					},
+					itemData:{
             type: Object,
             notify: true
           },
-          itemFilters:{
-            type: Array,
-            notify: true
-          },
-          itemPrice:{
+					searchTerm:{
+						type: String,
+						notify: true,
+						value:""
+					},
+			    itemPrice:{
             type: String,
             notify: true
           },
-          maxCost:{
-            type: Number,
-            notify: true,
-          },
-          showPizzas:{
-            type: Boolean,
-            notify: true
-          }
+					shouldFilter:{
+						type: Boolean,
+						notify: true,
+						value: false
+					},
+					alias:{
+						type: Object,
+						notify: true
+					}
         }
       }
 
       static get observers() {
         return [
-          '_updateFilter(itemFilters.splices)',
-          '_updateFilter(maxCost)',
-          '_updateFilter(showPizzas)',
+          '_updateFilter(searchTerm)',
           '_updateItemPrice(itemData)'
         ]
       }
@@ -107,54 +104,87 @@
         super.ready();
 
         this.itemName = this._firstLetterUppercase(this.itemName);
+        this.itemHeader = this._firstLetterUppercase(this.itemName);
 
         if(this.itemData.id != null){
-          this.itemName = this.itemData.id + ". " + this.itemName;
+          this.itemHeader = this.itemData.id + ". " + this.itemHeader;
         }
 
         if(this.itemData.spicy){
-          this.itemName += " (Stark)";
+          this.itemHeader += " (Stark)";
           this.$.container.classList.add("spicy");
         }
 
         if(this.itemData.veg){
-          this.itemName += " (Veg 🥗)";
+          this.itemHeader += " (Veg 🥗)";
           this.$.container.classList.add("veg");
         }
 
         switch(this.itemData.type){
           case "baked":
-            this.itemName += " (Inbakad)";
+            this.itemHeader += " (Inbakad)";
             break;
           case "half_baked":
-            this.itemName += " (Halv inbakad)";
+            this.itemHeader += " (Halv inbakad)";
             break;
         }
       }
 
       _updateFilter(){
-        var hidden = false;
-        for(var index in this.itemFilters){
-          var itemFilterData = this.itemFilters[index].toLowerCase();
+				if(!this.shouldFilter){
+					return;
+				}
 
-          if(!this.itemData.ingredients.includes(itemFilterData)
-              && ('hidden_ingredients' in this.itemData && !this.itemData.hidden_ingredients.includes(itemFilterData))){
-            hidden = true;
-            break;
-          }
-        }
+				var hidden = false;
+				var searchTerms = this.searchTerm.split(" ");
+				var types = [];
+				for(var index in searchTerms){
+					var filter = searchTerms[index];
+					switch(filter.charAt(0)){
+						case "\"":
+							filter = 	filter.replace(/['"]+/g, ''); //Removes quotes
+							if(filter.length == 0){
+								continue;
+							}
+							if(!this.itemName.toLowerCase().trim().includes(filter.toLowerCase().trim())){
+								hidden = true;
+							}
+							break;
+						case "+":
+							filter = filter.substring(1); //removes +
+							if(!(this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] != null && this._checkIfExist(filter, this.itemData.hidden_ingredients)))){
+								hidden = true;
+							}
+							break;
+						case "-":
+							filter = filter.substring(1); //removes -
+							if(this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] == null || this._checkIfExist(filter, this.itemData.hidden_ingredients))){
+									hidden = true;
+							}
+							break;
+						case "$":
+							filter = filter.substring(1); //removes $
+							var price = parseInt(filter);
+							if(this.itemData.price > price){
+								hidden = true;
+							}
+							break;
+						default:
+							types.push(filter);
+							break;
+					}
+				}
 
-        if(this.maxCost < this.itemData.price
-            && (this.itemData.family_price == null
-              || this.maxCost < this.itemData.family_price)){
-          hidden = true;
-        }
+				var foundType = false;
+				for(var i = 0; i < types.length; i++){
+					if(this._checkIfExist(types[i], [this.itemData.type])){
+						foundType = true;
+						break;
+					}
+				}
 
-        const type = this.itemData.type.toLowerCase();
+				this.hidden = !foundType;
 
-        if((type == "pizza" || type == "half_baked" || type == "baked") && this.showPizzas != undefined && !this.showPizzas){
-          hidden = true;
-        }
 
         if(hidden){
           this.$.container.classList.add("hidden");
@@ -187,9 +217,33 @@
         return output;
       }
 
-      _updateItemFilters(change){
+			_checkIfExist(filter, array){
+				filter = filter.toLowerCase();
+				var possibleFilter = this._getAllAlias(filter);
+				possibleFilter.push(filter);
+				for(var i in array){
+					for(var j in possibleFilter){
+						if(array[i] == possibleFilter[j]){
+							return true;
+						}
+					}
+				}
+				return false;
+			}
 
-      }
+			_getAllAlias(filter){
+				var output = [];
+				if(this.alias[filter] != null){
+					if(Array.isArray(this.alias[filter])){
+						for(var index in this.alias[filter]){
+							output.push(this.alias[filter][index]);
+						}
+					}else{
+						output.push(this.alias[filter]);
+					}
+				}
+				return output;
+			}
     }
 
     customElements.define(SannesItem.is, SannesItem);

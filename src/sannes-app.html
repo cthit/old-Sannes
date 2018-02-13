@@ -28,21 +28,6 @@
         margin:0;
       }
 
-      #subheader{
-        width:100%;
-        height:25px;
-        line-height:25px;
-        text-align: center;
-        padding:1px;
-        font-size: 0.8em;
-        background-color: #195e7b;
-      }
-
-      #subheader > p{
-        margin:0px;
-        color:white;
-      }
-
       #content{
         background-color: #F7F7F7;
 
@@ -50,7 +35,7 @@
         padding-top:24px;
         padding-left:10%;
         padding-right:10%;
-      }
+			}
 
       footer{
         background-color: #F7F7F7;
@@ -83,31 +68,27 @@
       <h1>🍕Sannes</h1>
     </div>
 
-    <div id="subheader">
-      <p>Har du förslag? Pinga @portals på Slack!</p>
-    </div>
-
     <div id="content">
       <div id="filter">
-        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" item-filters="{{itemFilters}}" max-cost="{{maxCost}}"></sannes-filter>
+        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-filter>
       </div>
       <h1 id="resultHeader" class="hidden">Resultat:</h1>
 
       <div id="resultContainer" class="flexContainer hidden">
         <template is="dom-repeat" items="[[allItems]]">
-          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]" show-pizzas=[[showPizzas]]></sannes-item>
+          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
         </template>
       </div>
 
       <div id="pizzasContainer">
         <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" item-filters=[[itemFilters]] max-cost="[[maxCost]]"></sannes-group>
+          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
         </template>
       </div>
 
       <div id="otherContainer">
         <template is="dom-repeat" items="[[others]]">
-          <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" item-filters="[[itemFilters]]" max-cost="[[maxCost]]"></sannes-group>
+          <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
         </template>
       </div>
     </div>
@@ -131,30 +112,25 @@
             type: Array,
             notify: true,
           },
-          showPizzas:{
-            type: Boolean,
-            notify: true,
-            observer: '_showPizzasUpdated'
-          },
           allIngredients:{
             type: Array,
             notify: true,
           },
-          itemFilters:{
-            type: Array,
-            notify: true,
-          },
-          maxCost:{
-            type: Number,
-            notify: true,
-            value: NaN
-          },
+					searchTerm:{
+						type: String,
+						value: "",
+						notify: true
+					},
           allItems:{
             type: Array,
             value: function(){
               return []
             }
-          }
+          },
+					alias:{
+						type: Object,
+						notify: true
+					}
         };
       }
 
@@ -171,7 +147,7 @@
       }
 
       _updateResultHeaderHidden(){
-        if(this.itemFilters.length > 0 || !isNaN(this.maxCost)){
+        if(this.searchTerm !== ""){
           this.$.resultContainer.classList.remove("hidden");
           this.$.resultHeader.classList.remove("hidden");
           this.$.pizzasContainer.classList.add("hidden");
@@ -192,8 +168,8 @@
         this.set('allItems', this._getAllItems());
         this.set('others', this._toArray(this._getOtherItemGroups()));
         this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
-
-      }
+				this.set('alias', this.ajaxResponse["alias"]);
+			}
 
       _getAllItems(){
         var allItems = {};
@@ -218,6 +194,7 @@
           outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
           outputObject["Grillat"] = this.ajaxResponse["roasts"];
           outputObject["Pasta"] = this.ajaxResponse["pastas"];
+					outputObject["Sallader"] = this.ajaxResponse["salads"];
           return outputObject;
       }
 

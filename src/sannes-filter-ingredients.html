@@ -1,0 +1,104 @@
+
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="/bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="/bower_components/paper-collapse-item/paper-collapse-item.html">
+
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="sannes-itemfilter.html">
+
+<dom-module id="sannes-filter-ingredients">
+  <template>
+    <style>
+      #itemFiltersContainer{
+        margin-top:10px;
+      }
+
+      #ingredientsContainer{
+        max-width:300px;
+      }
+
+      #autocompleteSuggestions{
+        --suggestions-wrapper:{
+          max-width:300px;
+        }
+      }
+
+    </style>
+
+		<div id="ingredientsContainer">
+		<div id="itemFiltersContainer">
+
+		</div>
+		<div class="autocomplete-wrapper">
+			<paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
+
+			<paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
+		</div>
+
+  </template>
+  <script>
+    class SannesFilterIngredients extends Polymer.Element{
+      static get is() { return 'sannes-filter-ingredients'; }
+
+      static get properties() {
+        return {
+					ingredientsFiltered:{
+						type: Array,
+						value: function(){
+							return [];
+						},
+						notify: true
+					},
+        }
+      }
+
+      static get observers() {
+        return [
+          '_renderIngredientsFiltered(ingredientsFiltered.splices)',
+        ]
+      }
+
+      ready(){
+        super.ready();
+        var self = this;
+        this.$.autocompleteSuggestions.addEventListener('autocomplete-selected', function (event) {
+          var selected = event.detail.text;
+          self.push("ingredientsFiltered", selected);
+        });
+      }
+
+			setIngredients(ingredients){
+				this.$.autocompleteSuggestions.source = ingredients;
+			}
+
+      _renderIngredientsFiltered(change){
+        this.$.ingredientInput.value = "";
+        var self = this;
+        this.$.itemFiltersContainer.innerHTML = "";
+        for(var i in this.ingredientsFiltered){
+          var  itemFilter = document.createElement("sannes-itemfilter");
+          itemFilter.itemName = this.ingredientsFiltered[i];
+          itemFilter.addEventListener("itemFilterRemoved", function(e){
+            var index = self.ingredientsFiltered.indexOf(e.detail.itemName);
+            self.splice('ingredientsFiltered', index, 1);
+          });
+
+          this.$.itemFiltersContainer.appendChild(itemFilter);
+        }
+      }
+
+      _firstLetterUppercase(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+    }
+
+    customElements.define(SannesFilterIngredients.is, SannesFilterIngredients);
+  </script>
+</dom-module>

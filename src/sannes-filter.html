@@ -4,8 +4,14 @@
 <link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
 <link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="/bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
-<link rel="import" href="sannes-itemfilter.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
+
+<link rel="import" href="sannes-filter-ingredients.html">
 
 <dom-module id="sannes-filter">
   <template>
@@ -23,7 +29,7 @@
       }
 
       #maxCostLabel{
-        max-width:130px;
+        max-width:250px;
       }
 
       #ingredientsContainer{
@@ -41,25 +47,115 @@
         margin-bottom:20px;
       }
 
+			paper-checkbox{
+				display:block;
+				margin-bottom: 15px;
+			}
+
+			.checkboxGrid{
+				display:flex;
+				flex-wrap: wrap;
+			}
+
+			.checkboxColumn{
+				display:inline-block;
+				width:300px;
+			}
+
+			.checkboxColumn > paper-checkbox{
+				display:block;
+			}
+
+			paper-tabs{
+				background-color: #44aedb;
+				--paper-tabs-selection-bar-color: #FF9800;
+			}
+
+			paper-tab{
+				color: white;
+				--paper-tab-ink: #FF9800;
+			}
+
+			#nameOfArticle{
+				max-width: 300px;
+				margin-bottom: 15px;
+			}
+
+			#advancedSearchInput{
+				margin-bottom:15px;
+			}
+
+			paper-button {
+			  text-transform: none;
+			}
+
+			.code{
+				padding:2px;
+				display:inline-block;
+				background-color: rgba(27,31,35,0.05)
+			}
+
     </style>
 
-    <div id="container">
-      <h2 id="containerHeader">Filter</h2>
-      <paper-checkbox checked active="{{showPizzas}}">Visa pizzor</paper-checkbox>
-      <paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" max="230"  auto-validate error-message="Maxkostnat för någonting här är 230kr">
-        <div slot="suffix">kr</div>
-      </paper-input>
-      <h3>Filtrera vilka ingredienser du vill ha på din pizza.</h3>
-      <div id="ingredientsContainer">
-      <div id="itemFiltersContainer">
+			<paper-tabs selected="{{selected}}">
+			  <paper-tab>Filtrera</paper-tab>
+			  <paper-tab>Avancerad filtrering</paper-tab>
+			</paper-tabs>
 
-      </div>
-      <div class="autocomplete-wrapper">
-        <paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
+			<div id="container">
+				<iron-pages selected="{{selected}}">
+				  <div>
+						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
 
-        <paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
-      </div>
-    </div>
+						<div class="checkboxColumn">
+							<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+							<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+							<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+						</div>
+						<div class="checkboxColumn">
+							<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+							<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+							<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+						</div>
+						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
+							<div slot="suffix">kr</div>
+						</paper-input>
+						<div>
+							<div>
+								<h3>Filtrera vilka ingredienser du vill ha på din pizza</h3>
+								<sannes-filter-ingredients id="addIngredientsFilter" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
+							</div>
+							<div>
+								<h3>Filtrera bort vilka ingredienser du inte vill ha på din pizza</h3>
+								<sannes-filter-ingredients id="removeIngredientsFilter" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
+							</div>
+						</div>
+					</div>
+				  <div>
+						<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
+						</paper-input>
+
+						<paper-button raised on-tap="_expandadvancedSearchCollapse">
+							Hur använder man avancerad filtrering?
+						</paper-button>
+
+						<iron-collapse id="advancedSearchCollapse">
+							<h3>Lägg till ingredienser</h3>
+							<p class="code">+skinka +champinjoner +ananas pizza</p>
+							<h3>Ta bort ingredienser</h3>
+							<p class="code">-köttfärs -feferoni pizza</p>
+							<h3>Söka efter namn</h3>
+							<p class="code">"Kebabpizza" pizza</p>
+							<h3>Söka efter kategori</h3>
+							<p> Detta nedan kommer att visa allting</p>
+							<p class="code">pizza rulle salad plate hamburger pasta</p>
+							<h3>Exempel:</h3>
+							<p class="code">+ananas +skinka pizza</p>
+						</paper-collapse-item>
+					</div>
+				</iron-pages>
+			</div>
+
     </div>
   </template>
   <script>
@@ -77,6 +173,26 @@
             type: Boolean,
             notify: true
           },
+					showPastas:{
+						type: Boolean,
+						notify: true
+					},
+					showRolls:{
+						type: Boolean,
+						notify: true
+					},
+					showPlates:{
+						type: Boolean,
+						notify: true
+					},
+					showHamburgers:{
+						type: Boolean,
+						notify: true,
+					},
+					showSalads:{
+						type: Boolean,
+						notify: true
+					},
           maxCostString:{
             type: String,
             value : "",
@@ -88,21 +204,54 @@
             value: NaN,
             notify: true
           },
-          itemFilters:{
-            type: Array,
-            value: function(){
-              return [];
-            },
-            notify: true
-          }
+					selected:{
+						type: Number,
+						value: 0,
+						notify: true,
+						observer: '_selectedUpdated'
+					},
+					searchTerm:{
+						type: String,
+						value: "",
+						notify: true,
+						observer: '_searchTermUpdated'
+					},
+					searchTermAdvancedInput:{
+						type: String,
+						value: "",
+						notify: true,
+						observer: '_searchTermAdvancedInputUpdated'
+					},
+					ingredientsToAdd:{
+						type: Array,
+						notify: true,
+					},
+					ingredientsToRemove:{
+						type: Array,
+						notify: true,
+					},
+					articleName:{
+						type: String,
+						notify: true,
+						value:"",
+					}
         }
       }
 
-      static get observers() {
-        return [
-          '_renderItemFilters(itemFilters.splices)'
-        ]
-      }
+			static get observers(){
+				return [
+					'_compileSearchTerm(ingredientsToAdd.splices)',
+					'_compileSearchTerm(ingredientsToRemove.splices)',
+					'_compileSearchTerm(articleName)',
+					'_compileSearchTerm(showPizzas, showRolls, showPastas, showPlates, showSalads, showHamburgers)',
+					'_compileSearchTerm(maxCost)'
+				]
+			}
+
+			ready(){
+				super.ready();
+				this._compileSearchTerm();
+			}
 
       _maxCostStringUpdated(){
         this.maxCost = parseInt(this.maxCostString);
@@ -117,38 +266,87 @@
           });
         }
 
-        this.$.autocompleteSuggestions.source = autocompleteIngredients;
-      }
-
-      ready(){
-        super.ready();
-
-        var self = this;
-        this.$.autocompleteSuggestions.addEventListener('autocomplete-selected', function (event) {
-          var selected = event.detail.text;
-          self.push("itemFilters", selected);
-        });
-      }
-
-      _renderItemFilters(change){
-        this.$.ingredientInput.value = "";
-        var self = this;
-        this.$.itemFiltersContainer.innerHTML = "";
-        for(var i in this.itemFilters){
-          var  itemFilter = document.createElement("sannes-itemfilter");
-          itemFilter.itemName = this.itemFilters[i];
-          itemFilter.addEventListener("itemFilterRemoved", function(e){
-            var index = self.itemFilters.indexOf(e.detail.itemName);
-            self.splice('itemFilters', index, 1);
-          });
-
-          this.$.itemFiltersContainer.appendChild(itemFilter);
-        }
+				// TODO FIX ME PLZ
+				this.$.addIngredientsFilter.setIngredients(autocompleteIngredients);
+				this.$.removeIngredientsFilter.setIngredients(autocompleteIngredients);
       }
 
       _firstLetterUppercase(str){
         return str.charAt(0).toUpperCase() + str.slice(1);
       }
+
+			_expandadvancedSearchCollapse(){
+				this.$.advancedSearchCollapse.toggle();
+			}
+
+			_searchTermUpdated(){
+				this.searchTerm = this.searchTerm.replace(/\s\s+/g, ' ').replace(/ $/, "").toLowerCase();
+			}
+
+			_selectedUpdated(){
+				if(this.selected == 0){
+					this._compileSearchTerm();
+				}else if(this.selected == 1){
+					this._searchTermAdvancedInputUpdated();
+				}
+			}
+
+			_compileSearchTerm(){
+				var nextSearchTerm = "";
+				nextSearchTerm += this.showPizzas ? "pizza " : "";
+				nextSearchTerm += this.showRolls ? "roll " : "";
+				nextSearchTerm += this.showPastas ? "pasta " : "";
+				nextSearchTerm += this.showPlates ? "plate " : "";
+				nextSearchTerm += this.showHamburgers ? "hamburger " : "";
+				nextSearchTerm += this.showSalads ? "salad " : "";
+
+				for(var i = 0; i < this.ingredientsToAdd.length; i++){
+					nextSearchTerm += "+" + this.ingredientsToAdd[i].toLowerCase() + " ";
+				}
+
+				for(var i = 0; i < this.ingredientsToRemove.length; i++){
+					nextSearchTerm += "-" + this.ingredientsToRemove[i].toLowerCase() + " ";
+				}
+
+				if(this.articleName !== ""){
+					nextSearchTerm += "\"" + this.articleName + "\" ";
+				}
+
+				if(!isNaN(this.maxCost)){
+					nextSearchTerm += "$" + parseInt(this.maxCost);
+				}
+
+				this.searchTerm = nextSearchTerm;
+			}
+
+			_searchTermAdvancedInputUpdated(){
+				//Removes all incomplete words
+				var searchTerms = this.searchTerm.split(" ");
+				for(var index in searchTerms){
+					var filter = searchTerms[index].replace(/\s\s+/g, ' ');
+					switch(filter.charAt(0)){
+						case "+":
+							if(!this.ingredients.includes(filter)){
+								this.searchTerm = this.searchTerm.replace(filter, "");
+							}
+							break;
+						case "-":
+							if(!this.ingredients.includes(filter)){
+								this.searchTerm = this.searchTerm.replace(filter, "");
+							}
+							break;
+						case "\"":
+							if(filter.length == 1){
+								this.searchTerm = this.searchTerm.replace(filter, "");
+							}
+							else if(filter.charAt(filter.length) != "\"" && filter.length > 1){
+								this.searchTerm = this.searchTerm.replace(filter, "");
+							}
+							break;
+					}
+				}
+				this.searchTerm = this.searchTermAdvancedInput;
+			}
 
 
     }
