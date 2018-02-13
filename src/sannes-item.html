@@ -139,6 +139,9 @@
 				var searchTerms = this.searchTerm.split(" ");
 				var types = [];
 				for(var index in searchTerms){
+					if(hidden){
+						break;
+					}
 					var filter = searchTerms[index];
 					switch(filter.charAt(0)){
 						case "\"":
@@ -169,6 +172,12 @@
 								hidden = true;
 							}
 							break;
+						case "%":
+							filter = filter.substring(1);
+							if(!this._checkIfExist(filter, this._getSpicyVegArray())){
+								hidden = true;
+							}
+							break;
 						default:
 							types.push(filter);
 							break;
@@ -184,7 +193,6 @@
 				}
 
 				this.hidden = !foundType;
-
 
         if(hidden){
           this.$.container.classList.add("hidden");
@@ -241,6 +249,17 @@
 					}else{
 						output.push(this.alias[filter]);
 					}
+				}
+				return output;
+			}
+
+			_getSpicyVegArray(){
+				var output = [];
+				if(this.itemData.spicy){
+					output.push("spicy");
+				}
+				if(this.itemData.veg){
+					output.push("veg");
 				}
 				return output;
 			}

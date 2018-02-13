@@ -23,7 +23,11 @@
 			"baked"
 		],
 		"halvinbakad": "half_baked",
-		"inbakad": "baked"
+		"inbakad": "baked",
+		"stark": "spicy",
+		"starkt": "spicy",
+		"vegetarisk": "veg",
+		"vegetariskt": "veg"
 	},
 	"pizzas":{
 		"1":{

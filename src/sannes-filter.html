@@ -7,6 +7,7 @@
 <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="/bower_components/paper-tabs/paper-tab.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-toggle-button/paper-toggle-button.html">
 
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
@@ -47,9 +48,15 @@
         margin-bottom:20px;
       }
 
+			paper-input{
+				--paper-input-container-focus-color: #FF9800;
+			}
+
 			paper-checkbox{
 				display:block;
 				margin-bottom: 15px;
+				--paper-checkbox-checked-color: #FF9800;
+ 				--paper-checkbox-checked-ink-color: #FF9800;
 			}
 
 			.checkboxGrid{
@@ -95,6 +102,22 @@
 				background-color: rgba(27,31,35,0.05)
 			}
 
+			#onlyVegetarian{
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+
+			#onlySpicy{
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+
+			paper-toggle-button{
+				--paper-toggle-button-checked-bar-color:  #FF9800;
+				--paper-toggle-button-checked-button-color:  #FF9800;
+				--paper-toggle-button-checked-ink-color: #FF9800;
+			}
+
     </style>
 
 			<paper-tabs selected="{{selected}}">
@@ -106,16 +129,26 @@
 				<iron-pages selected="{{selected}}">
 				  <div>
 						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-
-						<div class="checkboxColumn">
-							<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
-							<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
-							<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+						<div>
+							<div class="checkboxColumn">
+								<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+								<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+								<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+							</div>
+							<div class="checkboxColumn">
+								<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+								<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+								<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+							</div>
 						</div>
-						<div class="checkboxColumn">
-							<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
-							<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
-							<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+						<div>
+							<div class="checkboxColumn">
+								<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
+							</div>
+							<div class="checkboxColumn">
+								<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
+							</div>
+
 						</div>
 						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
 							<div slot="suffix">kr</div>
@@ -149,9 +182,11 @@
 							<h3>Söka efter kategori</h3>
 							<p> Detta nedan kommer att visa allting</p>
 							<p class="code">pizza rulle salad plate hamburger pasta</p>
+							<h3>Söka efter om den är stark och vegetarisk</h3>
+							<p class="code">%vegetarisk %stark pizza</p>
 							<h3>Exempel:</h3>
 							<p class="code">+ananas +skinka pizza</p>
-						</paper-collapse-item>
+						</iron-collapse>
 					</div>
 				</iron-pages>
 			</div>
@@ -192,6 +227,10 @@
 					showSalads:{
 						type: Boolean,
 						notify: true
+					},
+					onlyVegetarian:{
+						type: Boolean,
+						notify: true,
 					},
           maxCostString:{
             type: String,
@@ -314,6 +353,14 @@
 
 				if(!isNaN(this.maxCost)){
 					nextSearchTerm += "$" + parseInt(this.maxCost);
+				}
+
+				if(this.onlyVegetarian){
+					nextSearchTerm += "%" + "veg ";
+				}
+
+				if(this.onlySpicy){
+					nextSearchTerm += "%" + "spicy";
 				}
 
 				this.searchTerm = nextSearchTerm;
