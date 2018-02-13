@@ -72,7 +72,7 @@
       <div id="filter">
         <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-filter>
       </div>
-      <h1 id="resultHeader" class="hidden">Resultat:</h1>
+      <h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
       <div id="resultContainer" class="flexContainer hidden">
         <template is="dom-repeat" items="[[allItems]]">
@@ -136,18 +136,12 @@
 
       static get observers() {
         return [
-          '_updateResultHeaderHidden(itemFilters.splices)',
-          '_updateResultHeaderHidden(maxCost)'
+          '_updateResult(searchTerm)',
         ]
       }
 
-      ready(){
-        super.ready();
-        this._updateResultHeaderHidden();
-      }
-
-      _updateResultHeaderHidden(){
-        if(this.searchTerm !== ""){
+      _updateResult(){
+        if(this.searchTerm !== "pizza roll pasta plate hamburger salad"){
           this.$.resultContainer.classList.remove("hidden");
           this.$.resultHeader.classList.remove("hidden");
           this.$.pizzasContainer.classList.add("hidden");

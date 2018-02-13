@@ -131,8 +131,8 @@
 			},
 			"calzone":{
 				"id": 8,
-				"type": "pizza",
-				"veg": true,
+				"type": "baked",
+				"veg": false,
 				"spicy": false,
 				"ingredients":[
 					"skinka"

@@ -18,12 +18,16 @@
   <template>
     <style>
       #container{
+				max-width:700px;
         @apply --shadow-elevation-2dp;
-        padding:24px;
         background-color: white;
         margin-left: auto;
         margin-right: auto;
       }
+
+			#subcontainer{
+				padding:24px;
+			}
 
       #itemFiltersContainer{
         margin-top:10px;
@@ -120,78 +124,79 @@
 
     </style>
 
-			<paper-tabs selected="{{selected}}">
-			  <paper-tab>Filtrera</paper-tab>
-			  <paper-tab>Avancerad filtrering</paper-tab>
-			</paper-tabs>
-
 			<div id="container">
-				<iron-pages selected="{{selected}}">
-				  <div>
-						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-						<div>
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
-								<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
-								<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
-							</div>
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
-								<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
-								<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
-							</div>
-						</div>
-						<div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
-							</div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
-							</div>
+				<paper-tabs selected="{{selected}}">
+				  <paper-tab>Filtrera</paper-tab>
+				  <paper-tab>Avancerad filtrering</paper-tab>
+				</paper-tabs>
 
-						</div>
-						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
-							<div slot="suffix">kr</div>
-						</paper-input>
-						<div>
+				<div id="subcontainer">
+					<iron-pages selected="{{selected}}">
+					  <div>
+							<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
 							<div>
-								<h3>Filtrera vilka ingredienser du vill ha på din pizza</h3>
-								<sannes-filter-ingredients id="addIngredientsFilter" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+									<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+								</div>
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+									<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+									<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+								</div>
 							</div>
 							<div>
-								<h3>Filtrera bort vilka ingredienser du inte vill ha på din pizza</h3>
-								<sannes-filter-ingredients id="removeIngredientsFilter" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
+								</div>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
+								</div>
+
+							</div>
+							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
+								<div slot="suffix">kr</div>
+							</paper-input>
+							<div>
+								<div>
+									<h3>Filtrera vilka ingredienser du vill ha på din pizza</h3>
+									<sannes-filter-ingredients id="addIngredientsFilter" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
+								</div>
+								<div>
+									<h3>Filtrera bort vilka ingredienser du inte vill ha på din pizza</h3>
+									<sannes-filter-ingredients id="removeIngredientsFilter" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
+								</div>
 							</div>
 						</div>
-					</div>
-				  <div>
-						<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
-						</paper-input>
+					  <div>
+							<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
+							</paper-input>
 
-						<paper-button raised on-tap="_expandadvancedSearchCollapse">
-							Hur använder man avancerad filtrering?
-						</paper-button>
+							<paper-button raised on-tap="_expandadvancedSearchCollapse">
+								Hur använder man avancerad filtrering?
+							</paper-button>
 
-						<iron-collapse id="advancedSearchCollapse">
-							<h3>Lägg till ingredienser</h3>
-							<p class="code">+skinka +champinjoner +ananas pizza</p>
-							<h3>Ta bort ingredienser</h3>
-							<p class="code">-köttfärs -feferoni pizza</p>
-							<h3>Söka efter namn</h3>
-							<p class="code">"Kebabpizza" pizza</p>
-							<h3>Söka efter kategori</h3>
-							<p> Detta nedan kommer att visa allting</p>
-							<p class="code">pizza rulle salad plate hamburger pasta</p>
-							<h3>Söka efter om den är stark och vegetarisk</h3>
-							<p class="code">%vegetarisk %stark pizza</p>
-							<h3>Exempel:</h3>
-							<p class="code">+ananas +skinka pizza</p>
-						</iron-collapse>
-					</div>
-				</iron-pages>
-			</div>
-
-    </div>
+							<iron-collapse id="advancedSearchCollapse">
+								<h3>Söka efter kategori</h3>
+								<p> Detta nedan kommer att visa allting</p>
+								<p class="code">pizza rulle salad plate hamburger pasta</p>
+								<h3>Lägg till ingredienser</h3>
+								<p class="code">+skinka +champinjoner +ananas</p>
+								<h3>Ta bort ingredienser</h3>
+								<p class="code">-köttfärs -feferoni</p>
+								<h3>Söka efter namn</h3>
+								<p class="code">"Kebabpizza"</p>
+								<h3>Söka efter om den är stark och vegetarisk</h3>
+								<p class="code">%vegetarisk %stark</p>
+								<h3>Exempel:</h3>
+								<p class="code">+ananas -skinka pizza %vegetarisk</p>
+							</iron-collapse>
+						</div>
+					</iron-pages>
+				</div>
+	    </div>
+		</div>
   </template>
   <script>
     class SannesFilter extends Polymer.Element{
@@ -282,7 +287,7 @@
 					'_compileSearchTerm(ingredientsToAdd.splices)',
 					'_compileSearchTerm(ingredientsToRemove.splices)',
 					'_compileSearchTerm(articleName)',
-					'_compileSearchTerm(showPizzas, showRolls, showPastas, showPlates, showSalads, showHamburgers)',
+					'_compileSearchTerm(showPizzas, showRolls, showPastas, showPlates, showSalads, showHamburgers, onlyVegetarian, onlySpicy)',
 					'_compileSearchTerm(maxCost)'
 				]
 			}
@@ -360,7 +365,7 @@
 				}
 
 				if(this.onlySpicy){
-					nextSearchTerm += "%" + "spicy";
+					nextSearchTerm += "%" + "spicy ";
 				}
 
 				this.searchTerm = nextSearchTerm;
