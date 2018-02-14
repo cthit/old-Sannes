@@ -38,6 +38,7 @@
 			"half_baked",
 			"baked"
 		],
+		"lasagne": "lasagna",
 		"halvinbakad": "half_baked",
 		"inbakad": "baked",
 		"halv inbakad": "half_baked",
@@ -149,7 +150,7 @@
 			"vesuvio":{
 				"id": 7,
 				"type": "pizza",
-				"veg": true,
+				"veg": false,
 				"spicy": false,
 				"ingredients":[
 					"skinka", "paprika"
@@ -1239,7 +1240,7 @@
 		},
 		"tonfisksallad":{
 			"type": "salad",
-			"veg": true,
+			"veg": false,
 			"spicy": false,
 			"ingredients":[
 				"tonfisk", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
@@ -1248,7 +1249,7 @@
 		},
 		"kebabsallad":{
 			"type": "salad",
-			"veg": true,
+			"veg": false,
 			"spicy": false,
 			"ingredients":[
 				"kebabkött", "feferoni", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
@@ -1257,7 +1258,7 @@
 		},
 		"kräftsallad":{
 			"type": "salad",
-			"veg": true,
+			"veg": false,
 			"spicy": false,
 			"ingredients":[
 				"kräftstjärtar", "räkor", "rödlök", "gurka", "färska tomater", "isbergssallad", "valfri sås"
@@ -1265,27 +1266,24 @@
 			"price": 85
 		}
 	},
-	"lasagnes":{
+	"lasagna":{
 		"lasange al forno":{
+			"type": "lasagna",
+			"veg": false,
 			"spicy": false,
 			"price": 80
 		},
 		"lasange mexicana":{
+			"type": "lasagna",
+			"veg": false,
 			"spicy": true,
 			"price": 80
 		},
 		"lasange gorgonzola":{
+			"type": "lasagna",
+			"veg": false,
 			"spicy": false,
 			"price": 85
 		}
-	},
-	"drinks":{
-		"Mer 33cl": 15,
-		"Läsk 33cl": 15,
-		"Läsk 50cl": 20,
-		"Läsk 2l": 35
-	},
-	"sauces":[
-		"mild kebabsås", "stark kebabsås", "vitlökssås", "currysås", "bearnaisesås", "vinägrett", "rhode island-dressing"
-	]
+	}
 }

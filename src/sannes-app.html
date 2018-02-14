@@ -141,7 +141,7 @@
       }
 
       _updateResult(){
-        if(this.searchTerm !== "pizza roll pasta plate hamburger salad"){
+        if(this.searchTerm !== "pizza roll pasta plate hamburger salad lasagna"){
           this.$.resultContainer.classList.remove("hidden");
           this.$.resultHeader.classList.remove("hidden");
           this.$.pizzasContainer.classList.add("hidden");
@@ -191,7 +191,8 @@
           outputObject["Grillat"] = this.ajaxResponse["roasts"];
           outputObject["Pasta"] = this.ajaxResponse["pastas"];
 					outputObject["Sallader"] = this.ajaxResponse["salads"];
-          return outputObject;
+					outputObject["Lasagne"] = this.ajaxResponse["lasagna"];
+					return outputObject;
       }
 
       _getEveryUniqueIngredient(data){

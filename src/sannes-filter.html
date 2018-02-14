@@ -144,6 +144,7 @@
 									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
 									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
 									<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+									<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
 								</div>
 								<div class="checkboxColumn">
 									<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
@@ -185,7 +186,7 @@
 							<iron-collapse id="advancedSearchCollapse">
 								<h3>Söka efter kategori</h3>
 								<p> Detta nedan kommer att visa allting</p>
-								<p class="code">pizza rullar sallader tallrik hamburgare pasta</p>
+								<p class="code">pizza rullar sallader tallrik hamburgare pasta lasagne</p>
 								<h3>Lägg till ingredienser</h3>
 								<p class="code">+skinka +champinjoner +ananas</p>
 								<h3>Ta bort ingredienser</h3>
@@ -237,6 +238,10 @@
 						notify: true,
 					},
 					showSalads:{
+						type: Boolean,
+						notify: true
+					},
+					showLasagna:{
 						type: Boolean,
 						notify: true
 					},
@@ -294,7 +299,7 @@
 					'_compileSearchTerm(ingredientsToAdd.splices)',
 					'_compileSearchTerm(ingredientsToRemove.splices)',
 					'_compileSearchTerm(articleName)',
-					'_compileSearchTerm(showPizzas, showRolls, showPastas, showPlates, showSalads, showHamburgers, onlyVegetarian, onlySpicy)',
+					'_compileSearchTerm(showPizzas, showRolls, showPastas, showPlates, showSalads, showHamburgers, showLasagna, onlyVegetarian, onlySpicy)',
 					'_compileSearchTerm(maxCost)'
 				]
 			}
@@ -349,6 +354,7 @@
 				nextSearchTerm += this.showPlates ? "plate " : "";
 				nextSearchTerm += this.showHamburgers ? "hamburger " : "";
 				nextSearchTerm += this.showSalads ? "salad " : "";
+				nextSearchTerm += this.showLasagna ? "lasagna " : "";
 
 				for(var i = 0; i < this.ingredientsToAdd.length; i++){
 					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_"); + " ";
