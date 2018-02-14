@@ -1267,19 +1267,19 @@
 		}
 	},
 	"lasagna":{
-		"lasange al forno":{
+		"lasagne al forno":{
 			"type": "lasagna",
 			"veg": false,
 			"spicy": false,
 			"price": 80
 		},
-		"lasange mexicana":{
+		"lasagne mexicana":{
 			"type": "lasagna",
 			"veg": false,
 			"spicy": true,
 			"price": 80
 		},
-		"lasange gorgonzola":{
+		"lasagne gorgonzola":{
 			"type": "lasagna",
 			"veg": false,
 			"spicy": false,
