@@ -7,15 +7,31 @@
 		"rullar": "roll",
 		"tallrik": "plate",
 		"tallrikar": "plate",
-		"tomater": "färska tomater",
-		"färska tomater": "tomater",
+		"tomat": [
+			"färska tomater",
+			"tomater",
+			"soltorkade tomater"
+		],
+		"färska tomater": [
+			"tomat",
+			"tomater",
+			"soltorkade tomater"
+		],
+		"tomater":[
+			"färska tomater",
+			"tomat",
+			"soltorkade tomater"
+		],
+		"färsk vitlök": "vitlök",
+		"vitlök": "färsk vitlök",
 		"sås": [
 			"bearnaisesås",
 			"mild kebabsås",
 			"tacosås",
 			"stark vitlökssås",
 			"vitlökssås",
-			"stark kebabsås"
+			"stark kebabsås",
+			"valfri sås"
 		],
 		"vitlökssås": "stark vitlöksås",
 		"pizza":[
@@ -27,7 +43,9 @@
 		"stark": "spicy",
 		"starkt": "spicy",
 		"vegetarisk": "veg",
-		"vegetariskt": "veg"
+		"vegetariskt": "veg",
+		"jalapeno": "jalapeño",
+		"oxfile": "oxfilé"
 	},
 	"pizzas":{
 		"1":{

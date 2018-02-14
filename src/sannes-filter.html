@@ -122,6 +122,11 @@
 				--paper-toggle-button-checked-ink-color: #FF9800;
 			}
 
+			#advancedSearchCollapse > *{
+				margin-top:8px;
+				margin-bottom:8px;
+			}
+
     </style>
 
 			<div id="container">
@@ -180,11 +185,13 @@
 							<iron-collapse id="advancedSearchCollapse">
 								<h3>Söka efter kategori</h3>
 								<p> Detta nedan kommer att visa allting</p>
-								<p class="code">pizza rulle salad plate hamburger pasta</p>
+								<p class="code">pizza rullar sallader tallrik hamburgare pasta</p>
 								<h3>Lägg till ingredienser</h3>
 								<p class="code">+skinka +champinjoner +ananas</p>
 								<h3>Ta bort ingredienser</h3>
 								<p class="code">-köttfärs -feferoni</p>
+								<h3>Ingredienser som är fler än 1 ord</h3>
+								<p class="code">+färska_tomater -färsk_vitlök</p>
 								<h3>Söka efter namn</h3>
 								<p class="code">"Kebabpizza"</p>
 								<h3>Söka efter om den är stark och vegetarisk</h3>
@@ -345,7 +352,8 @@
 				nextSearchTerm += this.showSalads ? "salad " : "";
 
 				for(var i = 0; i < this.ingredientsToAdd.length; i++){
-					nextSearchTerm += "+" + this.ingredientsToAdd[i].toLowerCase() + " ";
+					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(" ", "_") + " ";
+					console.log(nextSearchTerm);
 				}
 
 				for(var i = 0; i < this.ingredientsToRemove.length; i++){
