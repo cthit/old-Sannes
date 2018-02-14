@@ -45,7 +45,19 @@
 		"vegetarisk": "veg",
 		"vegetariskt": "veg",
 		"jalapeno": "jalapeño",
-		"oxfile": "oxfilé"
+		"oxfile": "oxfilé",
+		"pommes": [
+			"pommes frites",
+			"pommes frites eller ris"
+		],
+		"köttfärs": "köttfärssås",
+		"taco": "tacomix",
+		"kräftor": "kräftstjärtar",
+		"kräfta": "kräftstjärtar",
+		"ris": "pommes frites eller ris",
+		"pommes frites": "pommes frites eller ris",
+		"feferoni": "strimlad feferoni"
+
 	},
 	"pizzas":{
 		"1":{

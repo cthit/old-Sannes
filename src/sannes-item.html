@@ -229,7 +229,7 @@
       }
 
 			_checkIfExist(filter, array){
-				filter = filter.toLowerCase().replace("_", " ");
+				filter = filter.toLowerCase().replace(/_/g, " ");
 				var possibleFilter = this._getAllAlias(filter);
 				possibleFilter.push(filter);
 				for(var i in array){

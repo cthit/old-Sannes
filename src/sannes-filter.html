@@ -317,7 +317,6 @@
           });
         }
 
-				// TODO FIX ME PLZ
 				this.$.addIngredientsFilter.setIngredients(autocompleteIngredients);
 				this.$.removeIngredientsFilter.setIngredients(autocompleteIngredients);
       }
@@ -352,12 +351,12 @@
 				nextSearchTerm += this.showSalads ? "salad " : "";
 
 				for(var i = 0; i < this.ingredientsToAdd.length; i++){
-					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(" ", "_") + " ";
+					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_"); + " ";
 					console.log(nextSearchTerm);
 				}
 
 				for(var i = 0; i < this.ingredientsToRemove.length; i++){
-					nextSearchTerm += "-" + this.ingredientsToRemove[i].toLowerCase() + " ";
+					nextSearchTerm += ("-" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_"); + " ";
 				}
 
 				if(this.articleName !== ""){
