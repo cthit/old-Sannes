@@ -65,6 +65,7 @@
 
 			.checkboxGrid{
 				display:flex;
+				flex-wrap: wrap;
 			}
 
 			.checkboxColumn{
@@ -147,7 +148,7 @@
 				display: flex;
 		    flex-wrap: wrap;
 		    align-items: flex-end;
-		    justify-content: space-around;
+		    justify-content: space-between;
 			}
 
     </style>
@@ -374,11 +375,11 @@
 				nextSearchTerm += this.showLasagna ? "lasagna " : "";
 
 				for(var i = 0; i < this.ingredientsToAdd.length; i++){
-					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_"); + " ";
+					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_") + " ";
 				}
 
 				for(var i = 0; i < this.ingredientsToRemove.length; i++){
-					nextSearchTerm += ("-" + this.ingredientsToRemove[i].toLowerCase()).replace(/ /g,"_"); + " ";
+					nextSearchTerm += ("-" + this.ingredientsToRemove[i].toLowerCase()).replace(/ /g,"_") + " ";
 				}
 
 				if(this.articleName !== ""){
@@ -398,6 +399,7 @@
 				}
 
 				this.searchTerm = nextSearchTerm;
+				console.log(this.searchTerm);
 			}
 
 			_searchTermAdvancedInputUpdated(){
