@@ -9,7 +9,7 @@
 <link rel="import" href="sannes-filter.html">
 
 <dom-module id="sannes-app">
-  <template>
+	<template>
     <style>
       :host {
         display: block;
@@ -78,187 +78,188 @@
         <template is="dom-repeat" items="[[allItems]]">
           <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
         </template>
-      </div>
+	</div>
 
-      <div id="pizzasContainer">
-        <template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+	<div id="pizzasContainer">
+		<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
           <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
         </template>
-      </div>
+	</div>
 
-      <div id="otherContainer">
-        <template is="dom-repeat" items="[[others]]">
+	<div id="otherContainer">
+		<template is="dom-repeat" items="[[others]]">
           <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
         </template>
-      </div>
-    </div>
+	</div>
+	</div>
 
-    <footer>
-      <h4>Think with Portals ❤</h4>
-    </footer>
+	<footer>
+		<h4>Think with Portals ❤</h4>
+	</footer>
 
-  </template>
-  <script>
-
-    class SannesApp extends Polymer.Element {
-      static get is() { return 'sannes-app'; }
-      static get properties() {
-        return {
-          ajaxResponse:{
-            type: Object,
-            notify: true
-          },
-          others:{
-            type: Array,
-            notify: true,
-          },
-          allIngredients:{
-            type: Array,
-            notify: true,
-          },
-					searchTerm:{
+	</template>
+	<script>
+		class SannesApp extends Polymer.Element {
+			static get is() {
+				return 'sannes-app';
+			}
+			static get properties() {
+				return {
+					ajaxResponse: {
+						type: Object,
+						notify: true
+					},
+					others: {
+						type: Array,
+						notify: true,
+					},
+					allIngredients: {
+						type: Array,
+						notify: true,
+					},
+					searchTerm: {
 						type: String,
 						value: "",
 						notify: true
 					},
-          allItems:{
-            type: Array,
-            value: function(){
-              return []
-            }
-          },
-					alias:{
+					allItems: {
+						type: Array,
+						value: function() {
+							return []
+						}
+					},
+					alias: {
 						type: Object,
 						notify: true
 					}
-        };
-      }
+				};
+			}
 
-      static get observers() {
-        return [
-          '_updateResult(searchTerm)',
-        ]
-      }
+			static get observers() {
+				return [
+					'_updateResult(searchTerm)',
+				]
+			}
 
-      _updateResult(){
-        if(this.searchTerm !== "pizza roll pasta plate hamburger salad lasagna"){
-          this.$.resultContainer.classList.remove("hidden");
-          this.$.resultHeader.classList.remove("hidden");
-          this.$.pizzasContainer.classList.add("hidden");
-          this.$.otherContainer.classList.add("hidden");
-        }else{
-          this.$.resultContainer.classList.add("hidden");
-          this.$.resultHeader.classList.add("hidden");
-          this.$.pizzasContainer.classList.remove("hidden");
-          this.$.otherContainer.classList.remove("hidden");
-        }
-      }
+			_updateResult() {
+				if (this.searchTerm !== "pizza roll pasta plate hamburger salad lasagna") {
+					this.$.resultContainer.classList.remove("hidden");
+					this.$.resultHeader.classList.remove("hidden");
+					this.$.pizzasContainer.classList.add("hidden");
+					this.$.otherContainer.classList.add("hidden");
+				} else {
+					this.$.resultContainer.classList.add("hidden");
+					this.$.resultHeader.classList.add("hidden");
+					this.$.pizzasContainer.classList.remove("hidden");
+					this.$.otherContainer.classList.remove("hidden");
+				}
+			}
 
-      _ajaxReponseUpdated(){
-        if(this.ajaxResponse == null){
-          return;
-        }
+			_ajaxReponseUpdated() {
+				if (this.ajaxResponse == null) {
+					return;
+				}
 
-        this.set('allItems', this._getAllItems());
-        this.set('others', this._toArray(this._getOtherItemGroups()));
-        this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
+				this.set('allItems', this._getAllItems());
+				this.set('others', this._toArray(this._getOtherItemGroups()));
+				this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
 				this.set('alias', this.ajaxResponse["alias"]);
 			}
 
-      _getAllItems(){
-        var allItems = {};
-        var allGroups = this._getOtherItemGroups();
+			_getAllItems() {
+				var allItems = {};
+				var allGroups = this._getOtherItemGroups();
 
-        for(var pizzaGroupIndex in this.ajaxResponse.pizzas){
-          allGroups[pizzaGroupIndex] = this.ajaxResponse.pizzas[pizzaGroupIndex];
-        }
+				for (var pizzaGroupIndex in this.ajaxResponse.pizzas) {
+					allGroups[pizzaGroupIndex] = this.ajaxResponse.pizzas[pizzaGroupIndex];
+				}
 
-        for(var groupIndex in allGroups){
-          for(var itemName in allGroups[groupIndex]){
-            allItems[itemName] = (allGroups[groupIndex][itemName]);
-          }
-        }
+				for (var groupIndex in allGroups) {
+					for (var itemName in allGroups[groupIndex]) {
+						allItems[itemName] = (allGroups[groupIndex][itemName]);
+					}
+				}
 
-        return this._toArray(allItems);
-      }
+				return this._toArray(allItems);
+			}
 
-      _getOtherItemGroups(){
-          var outputObject = {};
-          outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
-          outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
-          outputObject["Grillat"] = this.ajaxResponse["roasts"];
-          outputObject["Pasta"] = this.ajaxResponse["pastas"];
-					outputObject["Sallader"] = this.ajaxResponse["salads"];
-					outputObject["Lasagne"] = this.ajaxResponse["lasagna"];
-					return outputObject;
-      }
+			_getOtherItemGroups() {
+				var outputObject = {};
+				outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
+				outputObject["Hamburgare"] = this.ajaxResponse["hamburgers"];
+				outputObject["Grillat"] = this.ajaxResponse["roasts"];
+				outputObject["Pasta"] = this.ajaxResponse["pastas"];
+				outputObject["Sallader"] = this.ajaxResponse["salads"];
+				outputObject["Lasagne"] = this.ajaxResponse["lasagna"];
+				return outputObject;
+			}
 
-      _getEveryUniqueIngredient(data){
-        return this._removeDuplicates(this._mergeToOneArray(this._getAllIngredients(data)));
-      }
+			_getEveryUniqueIngredient(data) {
+				return this._removeDuplicates(this._mergeToOneArray(this._getAllIngredients(data)));
+			}
 
-      _removeDuplicates(array){
-        return array.filter( function( item, index, inputArray ) {
-           return inputArray.indexOf(item) == index;
-         });
-      }
+			_removeDuplicates(array) {
+				return array.filter(function(item, index, inputArray) {
+					return inputArray.indexOf(item) == index;
+				});
+			}
 
-      _mergeToOneArray(array) {
-        var  output = [];
+			_mergeToOneArray(array) {
+				var output = [];
 
-        array.forEach(item => {
-          if (Array.isArray(item)) {
-            output.push(...this._mergeToOneArray(item));
-          } else {
-            output.push(item);
-          }
-        });
+				array.forEach(item => {
+					if (Array.isArray(item)) {
+						output.push(...this._mergeToOneArray(item));
+					} else {
+						output.push(item);
+					}
+				});
 
-        return output;
-      }
+				return output;
+			}
 
-      _getAllIngredients(data){
-        var output = [];
+			_getAllIngredients(data) {
+				var output = [];
 
-        for(var index in data){
-          if(data.hasOwnProperty(index) && data[index] instanceof Object) {
-            if(index == "ingredients"){
-              output.push(data[index]);
+				for (var index in data) {
+					if (data.hasOwnProperty(index) && data[index] instanceof Object) {
+						if (index == "ingredients") {
+							output.push(data[index]);
 
-              if('hidden_ingredients' in data){
-                output.push(data['hidden_ingredients']);
-              }
-            }else{
-              output.push(this._getAllIngredients(data[index]));
-            }
-          }
-        }
+							if ('hidden_ingredients' in data) {
+								output.push(data['hidden_ingredients']);
+							}
+						} else {
+							output.push(this._getAllIngredients(data[index]));
+						}
+					}
+				}
 
-        return output;
-      }
+				return output;
+			}
 
-      _toArray(obj){
-        if(obj == null){
-          return [];
-        }
+			_toArray(obj) {
+				if (obj == null) {
+					return [];
+				}
 
-        return Object.keys(obj).map(function(key){
-          return {
-            name: key,
-            value: obj[key]
-          }
-        });
-      }
+				return Object.keys(obj).map(function(key) {
+					return {
+						name: key,
+						value: obj[key]
+					}
+				});
+			}
 
-      _showPizzasUpdated(){
-        if(!this.showPizzas){
-          this.$.pizzasContainer.classList.add("hidden");
-        }else{
-          this.$.pizzasContainer.classList.remove("hidden");
-        }
-      }
-    }
+			_showPizzasUpdated() {
+				if (!this.showPizzas) {
+					this.$.pizzasContainer.classList.add("hidden");
+				} else {
+					this.$.pizzasContainer.classList.remove("hidden");
+				}
+			}
+		}
 
-    window.customElements.define(SannesApp.is, SannesApp);
-  </script>
+		window.customElements.define(SannesApp.is, SannesApp);
+	</script>
 </dom-module>

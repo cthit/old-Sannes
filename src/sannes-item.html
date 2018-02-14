@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 
 <dom-module id="sannes-item">
-  <template>
+	<template>
     <style>
 
       #container{
@@ -53,131 +53,133 @@
         <template is="dom-repeat" items="[[itemData.ingredients]]">
           [[_beautifyIngredient(index, item)]]
         </template>
-      </div>
-    </div>
+	</div>
+	</div>
 
-  </template>
-  <script>
-    class SannesItem extends Polymer.Element{
-      static get is() { return 'sannes-item'; }
+	</template>
+	<script>
+		class SannesItem extends Polymer.Element {
+			static get is() {
+				return 'sannes-item';
+			}
 
-      static get properties() {
-        return {
-          itemName:{
-            type: String,
-            notify: true
-          },
-					itemHeader:{
+			static get properties() {
+				return {
+					itemName: {
+						type: String,
+						notify: true
+					},
+					itemHeader: {
 						type: String,
 						notify: true,
 					},
-					itemData:{
-            type: Object,
-            notify: true
-          },
-					searchTerm:{
+					itemData: {
+						type: Object,
+						notify: true
+					},
+					searchTerm: {
 						type: String,
 						notify: true,
-						value:""
+						value: ""
 					},
-			    itemPrice:{
-            type: String,
-            notify: true
-          },
-					shouldFilter:{
+					itemPrice: {
+						type: String,
+						notify: true
+					},
+					shouldFilter: {
 						type: Boolean,
 						notify: true,
 						value: false
 					},
-					alias:{
+					alias: {
 						type: Object,
 						notify: true
 					}
-        }
-      }
+				}
+			}
 
-      static get observers() {
-        return [
-          '_updateFilter(searchTerm)',
-          '_updateItemPrice(itemData)'
-        ]
-      }
+			static get observers() {
+				return [
+					'_updateFilter(searchTerm)',
+					'_updateItemPrice(itemData)'
+				]
+			}
 
-      ready(){
-        super.ready();
+			ready() {
+				super.ready();
 
-        this.itemName = this._firstLetterUppercase(this.itemName);
-        this.itemHeader = this._firstLetterUppercase(this.itemName);
+				this.itemName = this._firstLetterUppercase(this.itemName);
+				this.itemHeader = this._firstLetterUppercase(this.itemName);
 
-        if(this.itemData.id != null){
-          this.itemHeader = this.itemData.id + ". " + this.itemHeader;
-        }
+				if (this.itemData.id != null) {
+					this.itemHeader = this.itemData.id + ". " + this.itemHeader;
+				}
 
-        if(this.itemData.spicy){
-          this.itemHeader += " (Stark)";
-          this.$.container.classList.add("spicy");
-        }
+				if (this.itemData.spicy) {
+					this.itemHeader += " (Stark)";
+					this.$.container.classList.add("spicy");
+				}
 
-        if(this.itemData.veg){
-          this.itemHeader += " (Veg 🥗)";
-          this.$.container.classList.add("veg");
-        }
+				if (this.itemData.veg) {
+					this.itemHeader += " (Veg 🥗)";
+					this.$.container.classList.add("veg");
+				}
 
-        switch(this.itemData.type){
-          case "baked":
-            this.itemHeader += " (Inbakad)";
-            break;
-          case "half_baked":
-            this.itemHeader += " (Halv inbakad)";
-            break;
-        }
-      }
+				switch (this.itemData.type) {
+					case "baked":
+						this.itemHeader += " (Inbakad)";
+						break;
+					case "half_baked":
+						this.itemHeader += " (Halv inbakad)";
+						break;
+				}
+			}
 
-      _updateFilter(){
-				if(!this.shouldFilter){
+			_updateFilter() {
+				if (!this.shouldFilter) {
 					return;
 				}
 
 				var hidden = false;
 				var searchTerms = this.searchTerm.split(" ");
 				var types = [];
-				for(var index in searchTerms){
-					if(hidden){
+				for (var index in searchTerms) {
+					if (hidden) {
 						break;
 					}
 					var filter = searchTerms[index];
-					switch(filter.charAt(0)){
+					switch (filter.charAt(0)) {
 						case "\"":
-							filter = 	filter.replace(/['"]+/g, ''); //Removes quotes
-							if(filter.length == 0){
+							filter = filter.replace(/['"]+/g, ''); //Removes quotes
+							if (filter.length == 0) {
 								continue;
 							}
-							if(!this.itemName.toLowerCase().trim().includes(filter.toLowerCase().trim())){
+							if (!this.itemName.toLowerCase().trim().includes(filter.toLowerCase().trim())) {
 								hidden = true;
 							}
 							break;
 						case "+":
 							filter = filter.substring(1); //removes +
-							if(!(this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] != null && this._checkIfExist(filter, this.itemData.hidden_ingredients)))){
+							if (!(this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] != null && this._checkIfExist(filter, this.itemData.hidden_ingredients)))) {
 								hidden = true;
 							}
 							break;
 						case "-":
 							filter = filter.substring(1); //removes -
-							if(this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] == null || this._checkIfExist(filter, this.itemData.hidden_ingredients))){
-									hidden = true;
+							if (this._checkIfExist(filter, this.itemData.ingredients) || (this.itemData['hidden_ingredients'] == null || this._checkIfExist(filter, this.itemData.hidden_ingredients))) {
+								hidden = true;
 							}
 							break;
 						case "$":
 							filter = filter.substring(1); //removes $
 							var price = parseInt(filter);
-							if(this.itemData.price > price){
+							if (this.itemData.price > price) {
 								hidden = true;
 							}
 							break;
 						case "%":
 							filter = filter.substring(1);
-							if(!this._checkIfExist(filter, this._getSpicyVegArray())){
+							if (!this._checkIfExist(filter, this._getSpicyVegArray())) {
 								hidden = true;
 							}
 							break;
@@ -188,8 +190,8 @@
 				}
 
 				var foundType = false;
-				for(var i = 0; i < types.length; i++){
-					if(this._checkIfExist(types[i], [this.itemData.type])){
+				for (var i = 0; i < types.length; i++) {
+					if (this._checkIfExist(types[i], [this.itemData.type])) {
 						foundType = true;
 						break;
 					}
@@ -197,44 +199,44 @@
 
 				this.hidden = !foundType;
 
-        if(hidden){
-          this.$.container.classList.add("hidden");
-        }else{
-          this.$.container.classList.remove("hidden");
-        }
-      }
+				if (hidden) {
+					this.$.container.classList.add("hidden");
+				} else {
+					this.$.container.classList.remove("hidden");
+				}
+			}
 
-      _updateItemPrice(){
-        this.itemPrice = this.itemData.price + "kr" + ((this.itemData.family_price != null)
-          ? (" / " + this.itemData.family_price + "kr")
-          : "");
-      }
+			_updateItemPrice() {
+				this.itemPrice = this.itemData.price + "kr" + ((this.itemData.family_price != null) ?
+					(" / " + this.itemData.family_price + "kr") :
+					"");
+			}
 
-      _firstLetterUppercase(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
+			_firstLetterUppercase(str) {
+				return str.charAt(0).toUpperCase() + str.slice(1);
+			}
 
-      _beautifyIngredient(index, str){
-        var output = str;
+			_beautifyIngredient(index, str) {
+				var output = str;
 
-        if(index == 0){
-          output = this._firstLetterUppercase(output);
-        }
+				if (index == 0) {
+					output = this._firstLetterUppercase(output);
+				}
 
-        if(index != this.itemData.ingredients.length - 1){
-          output += ", ";
-        }
+				if (index != this.itemData.ingredients.length - 1) {
+					output += ", ";
+				}
 
-        return output;
-      }
+				return output;
+			}
 
-			_checkIfExist(filter, array){
+			_checkIfExist(filter, array) {
 				filter = filter.toLowerCase().replace(/_/g, " ");
 				var possibleFilter = this._getAllAlias(filter);
 				possibleFilter.push(filter);
-				for(var i in array){
-					for(var j in possibleFilter){
-						if(array[i] == possibleFilter[j]){
+				for (var i in array) {
+					for (var j in possibleFilter) {
+						if (array[i] == possibleFilter[j]) {
 							return true;
 						}
 					}
@@ -242,32 +244,32 @@
 				return false;
 			}
 
-			_getAllAlias(filter){
+			_getAllAlias(filter) {
 				var output = [];
-				if(this.alias[filter] != null){
-					if(Array.isArray(this.alias[filter])){
-						for(var index in this.alias[filter]){
+				if (this.alias[filter] != null) {
+					if (Array.isArray(this.alias[filter])) {
+						for (var index in this.alias[filter]) {
 							output.push(this.alias[filter][index]);
 						}
-					}else{
+					} else {
 						output.push(this.alias[filter]);
 					}
 				}
 				return output;
 			}
 
-			_getSpicyVegArray(){
+			_getSpicyVegArray() {
 				var output = [];
-				if(this.itemData.spicy){
+				if (this.itemData.spicy) {
 					output.push("spicy");
 				}
-				if(this.itemData.veg){
+				if (this.itemData.veg) {
 					output.push("veg");
 				}
 				return output;
 			}
-    }
+		}
 
-    customElements.define(SannesItem.is, SannesItem);
-  </script>
+		customElements.define(SannesItem.is, SannesItem);
+	</script>
 </dom-module>

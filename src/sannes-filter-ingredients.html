@@ -1,4 +1,3 @@
-
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete.html">
@@ -12,7 +11,7 @@
 <link rel="import" href="sannes-itemfilter.html">
 
 <dom-module id="sannes-filter-ingredients">
-  <template>
+	<template>
     <style>
       #itemFiltersContainer{
 				padding:5px;
@@ -49,77 +48,79 @@
 			</div>
 		</div>
   </template>
-  <script>
-    class SannesFilterIngredients extends Polymer.Element{
-      static get is() { return 'sannes-filter-ingredients'; }
+	<script>
+		class SannesFilterIngredients extends Polymer.Element {
+			static get is() {
+				return 'sannes-filter-ingredients';
+			}
 
-      static get properties() {
-        return {
-					ingredientsFiltered:{
+			static get properties() {
+				return {
+					ingredientsFiltered: {
 						type: Array,
-						value: function(){
+						value: function() {
 							return [];
 						},
 						notify: true
 					},
-					labelText:{
+					labelText: {
 						type: String,
 						notify: true
 					},
-					activeColor:{
+					activeColor: {
 						type: String,
 						notify: true
 					}
-        }
-      }
+				}
+			}
 
-      static get observers() {
-        return [
-          '_renderIngredientsFiltered(ingredientsFiltered.splices)',
-        ]
-      }
+			static get observers() {
+				return [
+					'_renderIngredientsFiltered(ingredientsFiltered.splices)',
+				]
+			}
 
-      ready(){
-        super.ready();
-        var self = this;
-        this.$.autocompleteSuggestions.addEventListener('autocomplete-selected', function (event) {
-          var selected = event.detail.text;
-          self.push("ingredientsFiltered", selected);
-        });
-      }
+			ready() {
+				super.ready();
+				var self = this;
+				this.$.autocompleteSuggestions.addEventListener('autocomplete-selected', function(event) {
+					var selected = event.detail.text;
+					self.push("ingredientsFiltered", selected);
+				});
+			}
 
-			setIngredients(ingredients){
+			setIngredients(ingredients) {
 				this.$.autocompleteSuggestions.source = ingredients;
 			}
 
-      _renderIngredientsFiltered(change){
-        this.$.ingredientInput.value = "";
-        var self = this;
-        this.$.itemFiltersContainer.innerHTML = "";
-        for(var i in this.ingredientsFiltered){
-          var  itemFilter = document.createElement("sannes-itemfilter");
-          itemFilter.itemName = this.ingredientsFiltered[i];
-          itemFilter.addEventListener("itemFilterRemoved", function(e){
-            var index = self.ingredientsFiltered.indexOf(e.detail.itemName);
-            self.splice('ingredientsFiltered', index, 1);
-          });
+			_renderIngredientsFiltered(change) {
+				this.$.ingredientInput.value = "";
+				var self = this;
+				this.$.itemFiltersContainer.innerHTML = "";
+				for (var i in this.ingredientsFiltered) {
+					var itemFilter = document.createElement("sannes-itemfilter");
+					itemFilter.itemName = this.ingredientsFiltered[i];
+					itemFilter.addEventListener("itemFilterRemoved", function(e) {
+						var index = self.ingredientsFiltered.indexOf(e.detail.itemName);
+						self.splice('ingredientsFiltered', index, 1);
+					});
 
-          this.$.itemFiltersContainer.appendChild(itemFilter);
-        }
+					this.$.itemFiltersContainer.appendChild(itemFilter);
+				}
 
-				if(this.ingredientsFiltered.length > 0){
+				if (this.ingredientsFiltered.length > 0) {
 					this.$.itemFiltersContainer.classList.add("active");
-				}else{
+				} else {
 					this.$.itemFiltersContainer.classList.remove("active");
 				}
-      }
+			}
 
-      _firstLetterUppercase(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
+			_firstLetterUppercase(str) {
+				return str.charAt(0).toUpperCase() + str.slice(1);
+			}
 
-    }
+		}
 
-    customElements.define(SannesFilterIngredients.is, SannesFilterIngredients);
-  </script>
+		customElements.define(SannesFilterIngredients.is, SannesFilterIngredients);
+	</script>
 </dom-module>

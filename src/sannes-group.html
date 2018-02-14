@@ -3,7 +3,7 @@
 <link rel="import" href="sannes-item.html">
 
 <dom-module id="sannes-group">
-  <template>
+	<template>
     <style>
       :host{
         display: inline-block;
@@ -28,69 +28,71 @@
       <template is="dom-repeat" items="[[_toArray(groupData)]]">
         <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-item>
       </template>
-    </div>
+	</div>
 
-  </template>
-  <script>
-    class SannesGroup extends Polymer.Element{
-      static get is() { return 'sannes-group'; }
+	</template>
+	<script>
+		class SannesGroup extends Polymer.Element {
+			static get is() {
+				return 'sannes-group';
+			}
 
-      static get properties() {
-        return {
-          groupName:{
-            type: String,
-            notify: true
-          },
-          groupData:{
-            type: Object,
-            notify: true
-          },
-					searchTerm:{
+			static get properties() {
+				return {
+					groupName: {
 						type: String,
 						notify: true
 					},
-          items:{
-            type: Array,
-            value: function(){
-              return [];
-            }
-          },
-					alias:{
+					groupData: {
+						type: Object,
+						notify: true
+					},
+					searchTerm: {
+						type: String,
+						notify: true
+					},
+					items: {
+						type: Array,
+						value: function() {
+							return [];
+						}
+					},
+					alias: {
 						type: Object,
 						notify: true
 					}
-        }
-      }
+				}
+			}
 
-      static get observers() {
-        return [
-          '_updateItemFilters(itemFilters.splices)',
-          '_updateItemFilters(maxCost)'
-        ]
-      }
+			static get observers() {
+				return [
+					'_updateItemFilters(itemFilters.splices)',
+					'_updateItemFilters(maxCost)'
+				]
+			}
 
-      _updateItemFilters(change){
-        if(this.searchTerm !== ""){
-          this.$.header.classList.add("hidden");
-        }else{
-          this.$.header.classList.remove("hidden");
-        }
-      }
+			_updateItemFilters(change) {
+				if (this.searchTerm !== "") {
+					this.$.header.classList.add("hidden");
+				} else {
+					this.$.header.classList.remove("hidden");
+				}
+			}
 
-      ready(){
-        super.ready();
-      }
+			ready() {
+				super.ready();
+			}
 
-      _toArray(obj){
-        return Object.keys(obj).map(function(key){
-          return {
-            name: key,
-            value: obj[key]
-          }
-        });
-      }
-    }
+			_toArray(obj) {
+				return Object.keys(obj).map(function(key) {
+					return {
+						name: key,
+						value: obj[key]
+					}
+				});
+			}
+		}
 
-    customElements.define(SannesGroup.is, SannesGroup);
-  </script>
+		customElements.define(SannesGroup.is, SannesGroup);
+	</script>
 </dom-module>
