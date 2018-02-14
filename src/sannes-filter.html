@@ -70,7 +70,7 @@
 
 			.checkboxColumn{
 				display:inline-block;
-				width:300px;
+				width:150px;
 			}
 
 			.checkboxColumn > paper-checkbox{
@@ -151,6 +151,12 @@
 		    justify-content: space-between;
 			}
 
+			#onlyPizzaButton{
+				margin-top:10px;
+				margin-left:0px;
+				margin-bottom:10px;
+			}
+
     </style>
 
 			<div id="container">
@@ -176,6 +182,7 @@
 									<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
 								</div>
 							</div>
+							<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
 							<div>
 								<div class="checkboxColumn">
 									<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
@@ -325,6 +332,16 @@
 			ready(){
 				super.ready();
 				this._compileSearchTerm();
+			}
+
+			_onlyPizza(){
+				this.showHamburgers = false;
+				this.showSalads = false;
+				this.showRolls = false;
+				this.showPlates = false;
+				this.showLasagna = false;
+				this.showPastas = false;
+				this.showPizzas = true;
 			}
 
       _maxCostStringUpdated(){
