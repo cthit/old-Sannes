@@ -58,8 +58,25 @@
 		"kräfta": "kräftstjärtar",
 		"ris": "pommes frites eller ris",
 		"pommes frites": "pommes frites eller ris",
-		"feferoni": "strimlad feferoni"
-
+		"feferoni": "strimlad feferoni",
+		"allt":[
+			"pizza",
+			"lasagna",
+			"roll",
+			"pasta",
+			"plate",
+			"hamburger",
+			"salad"
+		],
+		"*":[
+			"pizza",
+			"lasagna",
+			"roll",
+			"pasta",
+			"plate",
+			"hamburger",
+			"salad"
+		]
 	},
 	"pizzas":{
 		"1":{
