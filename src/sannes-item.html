@@ -234,9 +234,6 @@
 				possibleFilter.push(filter);
 				for(var i in array){
 					for(var j in possibleFilter){
-						if(possibleFilter[i] == 'lasagna'){
-							console.log(array[i] + "; " + possibleFilter[j]);
-						}
 						if(array[i] == possibleFilter[j]){
 							return true;
 						}

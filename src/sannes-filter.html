@@ -65,7 +65,6 @@
 
 			.checkboxGrid{
 				display:flex;
-				flex-wrap: wrap;
 			}
 
 			.checkboxColumn{
@@ -127,6 +126,30 @@
 				margin-bottom:8px;
 			}
 
+			.normalWeightHeader{
+				font-weight: normal;
+			}
+
+			#addIngredientsFilter{
+				--active-background-color: #C8E6C9;
+			}
+
+			#removeIngredientsFilter{
+				--active-background-color: #FFCDD2;
+			}
+
+			#addIngredientsFilter, #removeIngredientsFilter{
+				width:250px;
+			}
+
+			#ingredientsFiltersContainer{
+				margin-top:25px;
+				display: flex;
+		    flex-wrap: wrap;
+		    align-items: flex-end;
+		    justify-content: space-around;
+			}
+
     </style>
 
 			<div id="container">
@@ -139,7 +162,7 @@
 					<iron-pages selected="{{selected}}">
 					  <div>
 							<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-							<div>
+							<div class="checkboxGrid">
 								<div class="checkboxColumn">
 									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
 									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
@@ -164,15 +187,9 @@
 							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
 								<div slot="suffix">kr</div>
 							</paper-input>
-							<div>
-								<div>
-									<h3>Filtrera vilka ingredienser du vill ha på din pizza</h3>
-									<sannes-filter-ingredients id="addIngredientsFilter" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
-								</div>
-								<div>
-									<h3>Filtrera bort vilka ingredienser du inte vill ha på din pizza</h3>
-									<sannes-filter-ingredients id="removeIngredientsFilter" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
-								</div>
+							<div id="ingredientsFiltersContainer">
+								<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
+								<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
 							</div>
 						</div>
 					  <div>
@@ -358,7 +375,6 @@
 
 				for(var i = 0; i < this.ingredientsToAdd.length; i++){
 					nextSearchTerm += ("+" + this.ingredientsToAdd[i].toLowerCase()).replace(/ /g,"_"); + " ";
-					console.log(nextSearchTerm);
 				}
 
 				for(var i = 0; i < this.ingredientsToRemove.length; i++){

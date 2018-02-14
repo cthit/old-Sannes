@@ -15,12 +15,16 @@
   <template>
     <style>
       #itemFiltersContainer{
-        margin-top:10px;
+				padding:5px;
       }
 
       #ingredientsContainer{
         max-width:300px;
       }
+
+			.active{
+				background-color:var(--active-background-color);
+			}
 
       #autocompleteSuggestions{
         --suggestions-wrapper:{
@@ -35,15 +39,15 @@
     </style>
 
 		<div id="ingredientsContainer">
-		<div id="itemFiltersContainer">
+			<div id="itemFiltersContainer">
 
+			</div>
+			<div class="autocomplete-wrapper">
+				<paper-input id="ingredientInput" label="{{labelText}}"></paper-input>
+
+				<paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
+			</div>
 		</div>
-		<div class="autocomplete-wrapper">
-			<paper-input id="ingredientInput" label="Lägg till ingrediens"></paper-input>
-
-			<paper-autocomplete-suggestions id="autocompleteSuggestions" for="ingredientInput" highlight-first></paper-autocomplete-suggestions>
-		</div>
-
   </template>
   <script>
     class SannesFilterIngredients extends Polymer.Element{
@@ -58,6 +62,14 @@
 						},
 						notify: true
 					},
+					labelText:{
+						type: String,
+						notify: true
+					},
+					activeColor:{
+						type: String,
+						notify: true
+					}
         }
       }
 
@@ -94,6 +106,12 @@
 
           this.$.itemFiltersContainer.appendChild(itemFilter);
         }
+
+				if(this.ingredientsFiltered.length > 0){
+					this.$.itemFiltersContainer.classList.add("active");
+				}else{
+					this.$.itemFiltersContainer.classList.remove("active");
+				}
       }
 
       _firstLetterUppercase(str){
