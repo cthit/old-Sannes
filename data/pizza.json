@@ -76,7 +76,13 @@
 			"plate",
 			"hamburger",
 			"salad"
-		]
+		],
+		"sallad": "isbergssallad",
+		"isbergssallad": "sallad",
+		"kyckling": "kycklingkött",
+		"kycklingkött": "kyckling",
+		"kebabkött": "kebab",
+		"kebab": "kebabkött"
 	},
 	"pizzas":{
 		"1":{
@@ -1024,7 +1030,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
-				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+				"kebabkött", "feferoni", "isbergssallad", "lök", "gurka", "färska tomater", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1036,7 +1042,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
-				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+				"fetaost", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1048,7 +1054,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
-				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+				"kebabkött", "fetaost", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1060,7 +1066,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
-				"champinjoner", "fetaost", "kronärtskocka", "lök", "mozzarellaost", "oliver", "paprika", "ruccola", "soltorkade tomater", "vitlök"
+				"kycklingkött", "feferoni", "lök", "isbergssallad", "gurka", "färska tomater", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
