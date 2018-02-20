@@ -1,0 +1,11 @@
+version: "2"
+services:
+  app:
+    image: sannes-dev:latest
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+        - ./:/app
+    ports:
+      - "8081:8081"
