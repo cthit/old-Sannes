@@ -191,7 +191,7 @@
 								</div>
 
 							</div>
-							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="50" max="230"  auto-validate error-message="50 <= Kostnad <= 230">
+							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
 								<div slot="suffix">kr</div>
 							</paper-input>
 							<div id="ingredientsFiltersContainer">
@@ -318,6 +318,14 @@
 						type: String,
 						notify: true,
 						value: "",
+					},
+					largestPrice:{
+						type: Number,
+						notify: true
+					},
+					smallestPrice:{
+						type: Number,
+						notify: true
 					}
 				}
 			}

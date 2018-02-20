@@ -70,7 +70,7 @@
 
     <div id="content">
       <div id="filter">
-        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-filter>
+        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]"></sannes-filter>
       </div>
       <h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
@@ -131,6 +131,14 @@
 					alias: {
 						type: Object,
 						notify: true
+					},
+					largestPrice:{
+						type: Number,
+						notify: true,
+					},
+					smallestPrice:{
+						type: Number,
+						notify: true
 					}
 				};
 			}
@@ -161,6 +169,42 @@
 				}
 
 				this.set('allItems', this._getAllItems());
+
+				var maxPrice = -1;
+				var minPrice = -1;
+
+				for(var i = 0; i < this.allItems.length; i++){
+					var price = this.allItems[i].value.price;
+					var familyPrice = this.allItems[i].value.family_price;
+
+					if(minPrice == -1){
+						if(familyPrice != null){
+							minPrice = Math.min(price, familyPrice);
+						}else{
+							minPrice = price;
+						}
+					}
+
+					if(maxPrice == -1){
+						if(familyPrice != null){
+							maxPrice = Math.max(price, familyPrice);
+						}else{
+							maxPrice = price;
+						}
+					}
+
+					if(familyPrice != null){
+						maxPrice = Math.max(Math.max(price, familyPrice), maxPrice);
+						minPrice = Math.min(Math.min(price, familyPrice), minPrice);
+					}else{
+						maxPrice = Math.max(maxPrice, price);
+						minPrice = Math.min(minPrice, price);
+					}
+				}
+
+				this.largestPrice = maxPrice;
+				this.smallestPrice = minPrice;
+
 				this.set('others', this._toArray(this._getOtherItemGroups()));
 				this.set('allIngredients', this._getEveryUniqueIngredient(this.ajaxResponse));
 				this.set('alias', this.ajaxResponse["alias"]);
