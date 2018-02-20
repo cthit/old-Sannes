@@ -1173,7 +1173,7 @@
 	},
 	"pastas":{
 		"carbonara":{
-			"type": "plate",
+			"type": "pasta",
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
@@ -1185,7 +1185,7 @@
 			"price": 80
 		},
 		"vegetale":{
-			"type": "plate",
+			"type": "pasta",
 			"veg": true,
 			"spicy": false,
 			"ingredients":[
@@ -1197,7 +1197,7 @@
 			"price": 85
 		},
 		"africana":{
-			"type": "plate",
+			"type": "pasta",
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
@@ -1209,7 +1209,7 @@
 			"price": 85
 		},
 		"bolognese":{
-			"type": "plate",
+			"type": "pasta",
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
@@ -1221,7 +1221,7 @@
 			"price": 80
 		},
 		"havets pasta":{
-			"type": "plate",
+			"type": "pasta",
 			"veg": false,
 			"spicy": false,
 			"ingredients":[
