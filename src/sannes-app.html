@@ -70,13 +70,13 @@
 
     <div id="content">
       <div id="filter">
-        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]"></sannes-filter>
+        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
       </div>
       <h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
       <div id="resultContainer" class="flexContainer hidden">
         <template is="dom-repeat" items="[[allItems]]">
-          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
+          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
         </template>
 	</div>
 
@@ -88,8 +88,8 @@
 
 	<div id="otherContainer">
 		<template is="dom-repeat" items="[[others]]">
-          <sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-        </template>
+      	<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+    </template>
 	</div>
 	</div>
 
@@ -139,6 +139,11 @@
 					smallestPrice:{
 						type: Number,
 						notify: true
+					},
+					sortBy:{
+						type: String,
+						notify: true,
+						observer: '_sortByChanged'
 					}
 				};
 			}
@@ -146,11 +151,12 @@
 			static get observers() {
 				return [
 					'_updateResult(searchTerm)',
+					'_updateResult(sortBy)'
 				]
 			}
 
 			_updateResult() {
-				if (this.searchTerm !== "pizza roll pasta plate hamburger salad lasagna") {
+				if (this.searchTerm !== "pizza roll pasta plate hamburger salad lasagna" || this.sortBy !== "standard") {
 					this.$.resultContainer.classList.remove("hidden");
 					this.$.resultHeader.classList.remove("hidden");
 					this.$.pizzasContainer.classList.add("hidden");
@@ -227,6 +233,45 @@
 				return this._toArray(allItems);
 			}
 
+			_sortByChanged(){
+				var sorts = [];
+				for(var i = 0; i < this.allItems.length; i++){
+					sorts.push({
+						"allItemsIndex": i,
+						"name": this.allItems[i].name,
+						"price": this.allItems[i].value.price
+					});
+				}
+
+				switch(this.sortBy){
+					case "standard":
+						sorts.sort(function(a, b){
+							return a.allItemsIndex - b.allItemsIndex;
+						});
+						break;
+					case "alphabetically":
+						sorts.sort(function(a, b){
+							return a.name.localeCompare(b.name);
+						});
+						break;
+					case "cheapest":
+						sorts.sort(function(a, b){
+							return a.price - b.price;
+						});
+					break;
+					case "expensivest":
+						sorts.sort(function(a, b){
+							return b.price - a.price;
+						});
+						break;
+				}
+				for(var i = 0; i < sorts.length; i++){
+
+					this.allItems[sorts[i].allItemsIndex].order = i;
+					this.notifyPath("allItems." + sorts[i].allItemsIndex + ".order");
+				}
+			}
+
 			_getOtherItemGroups() {
 				var outputObject = {};
 				outputObject["Kebabrullar"] = this.ajaxResponse["kebab rolls"];
@@ -290,7 +335,8 @@
 				return Object.keys(obj).map(function(key) {
 					return {
 						name: key,
-						value: obj[key]
+						value: obj[key],
+						order: 0
 					}
 				});
 			}

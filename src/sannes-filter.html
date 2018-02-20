@@ -7,11 +7,16 @@
 <link rel="import" href="/bower_components/paper-tabs/paper-tab.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/bower_components/neon-animation/web-animations.html">
 
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
 
 <link rel="import" href="sannes-filter-ingredients.html">
+
 
 <dom-module id="sannes-filter">
 	<template>
@@ -156,6 +161,10 @@
 				margin-bottom:10px;
 			}
 
+			#sortByDropdown{
+				margin-top:25px;
+			}
+
     </style>
 
 			<div id="container">
@@ -198,6 +207,14 @@
 								<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
 								<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
 							</div>
+							<paper-dropdown-menu id="sortByDropdown" label="Sortera efter" on-iron-select="_sortChanged">
+					      <paper-listbox slot="dropdown-content" class="dropdown-content" selected="3">
+					        <paper-item>Billigaste först</paper-item>
+					        <paper-item>Dyrast först</paper-item>
+					        <paper-item>Bokstavsordning</paper-item>
+					        <paper-item>Grupper</paper-item>
+					      </paper-listbox>
+					    </paper-dropdown-menu>
 						</div>
 					  <div>
 							<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
@@ -326,6 +343,16 @@
 					smallestPrice:{
 						type: Number,
 						notify: true
+					},
+					selectedSortBy:{
+						type: Number,
+						notify: true,
+						value: 3
+					},
+					sortBy:{
+						type: String,
+						notify: true,
+						value: "standard" //alphabetically, cheapest, expensivest
 					}
 				}
 			}
@@ -382,6 +409,27 @@
 
 			_searchTermUpdated() {
 				this.searchTerm = this.searchTerm.replace(/\s\s+/g, ' ').replace(/ $/, "").toLowerCase();
+			}
+
+			_sortChanged(e){
+				var selectedId = e.target.selected;
+				switch(selectedId){
+					case 0:
+						this.sortBy = "cheapest";
+						break;
+					case 1:
+						this.sortBy = "expensivest";
+						break;
+					case 2:
+						this.sortBy = "alphabetically";
+						break;
+					case 3:
+						this.sortBy = "standard";
+						break;
+					default:
+						this.sortBy = "standard";
+						break;
+				}
 			}
 
 			_selectedUpdated() {

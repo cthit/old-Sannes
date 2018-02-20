@@ -4,6 +4,9 @@
 	<template>
     <style>
 
+			:host{
+			}
+
       #container{
         @apply --shadow-elevation-2dp;
 				width:300px;
@@ -14,8 +17,6 @@
         background-color: white;
 				flex-grow:100;
       }
-
-
 
       div{
         display:inline-block;
@@ -68,6 +69,11 @@
 					itemName: {
 						type: String,
 						notify: true
+					},
+					itemOrder:{
+						type: Number,
+						notify: true,
+						observer: '_itemOrderUpdated'
 					},
 					itemHeader: {
 						type: String,
@@ -133,6 +139,10 @@
 						this.itemHeader += " (Halv inbakad)";
 						break;
 				}
+			}
+
+			_itemOrderUpdated(){
+				this.style.order = this.itemOrder;
 			}
 
 			_updateFilter() {
