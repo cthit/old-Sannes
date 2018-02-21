@@ -4,8 +4,6 @@
 	<template>
     <style>
 
-			:host{
-			}
 
       #container{
         @apply --shadow-elevation-2dp;
@@ -42,6 +40,14 @@
       .hidden{
         display:none;
       }
+
+			.veg{
+				background-color: #E8F5E9 !important;
+			}
+
+			.spicy{
+				background-color: #FFEBEE !important;
+			}
 
     </style>
 
@@ -126,7 +132,7 @@
 				}
 
 				if (this.itemData.veg) {
-					this.itemHeader += " (Veg 🥗)";
+					this.itemHeader += " (Veg)";
 					this.$.container.classList.add("veg");
 				}
 
