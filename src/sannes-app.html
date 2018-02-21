@@ -62,40 +62,40 @@
 
     </style>
 
-    <iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
+		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
-    <div id="header">
-      <h1>🍕Sannes</h1>
-    </div>
+		<div id="header">
+			<h1>🍕Sannes</h1>
+		</div>
 
-    <div id="content">
-      <div id="filter">
-        <sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
-      </div>
-      <h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
+		<div id="content">
+			<div id="filter">
+				<sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
+			</div>
+			<h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
-      <div id="resultContainer" class="flexContainer hidden">
-        <template is="dom-repeat" items="[[allItems]]">
-          <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
+			<div id="resultContainer" class="flexContainer hidden">
+				<template is="dom-repeat" items="[[allItems]]">
+        	<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
         </template>
-	</div>
+			</div>
 
-	<div id="pizzasContainer">
-		<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-          <sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+			<div id="pizzasContainer">
+				<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+        	<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
         </template>
-	</div>
+			</div>
 
-	<div id="otherContainer">
-		<template is="dom-repeat" items="[[others]]">
-      	<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-    </template>
-	</div>
-	</div>
+			<div id="otherContainer">
+				<template is="dom-repeat" items="[[others]]">
+	      	<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+		    </template>
+			</div>
+		</div>
 
-	<footer>
-		<h4>Think with Portals ❤</h4>
-	</footer>
+		<footer>
+			<h4>Think with Portals ❤</h4>
+		</footer>
 
 	</template>
 	<script>
@@ -132,15 +132,15 @@
 						type: Object,
 						notify: true
 					},
-					largestPrice:{
+					largestPrice: {
 						type: Number,
 						notify: true,
 					},
-					smallestPrice:{
+					smallestPrice: {
 						type: Number,
 						notify: true
 					},
-					sortBy:{
+					sortBy: {
 						type: String,
 						notify: true,
 						observer: '_sortByChanged'
@@ -179,30 +179,30 @@
 				var maxPrice = -1;
 				var minPrice = -1;
 
-				for(var i = 0; i < this.allItems.length; i++){
+				for (var i = 0; i < this.allItems.length; i++) {
 					var price = this.allItems[i].value.price;
 					var familyPrice = this.allItems[i].value.family_price;
 
-					if(minPrice == -1){
-						if(familyPrice != null){
+					if (minPrice == -1) {
+						if (familyPrice != null) {
 							minPrice = Math.min(price, familyPrice);
-						}else{
+						} else {
 							minPrice = price;
 						}
 					}
 
-					if(maxPrice == -1){
-						if(familyPrice != null){
+					if (maxPrice == -1) {
+						if (familyPrice != null) {
 							maxPrice = Math.max(price, familyPrice);
-						}else{
+						} else {
 							maxPrice = price;
 						}
 					}
 
-					if(familyPrice != null){
+					if (familyPrice != null) {
 						maxPrice = Math.max(Math.max(price, familyPrice), maxPrice);
 						minPrice = Math.min(Math.min(price, familyPrice), minPrice);
-					}else{
+					} else {
 						maxPrice = Math.max(maxPrice, price);
 						minPrice = Math.min(minPrice, price);
 					}
@@ -233,9 +233,9 @@
 				return this._toArray(allItems);
 			}
 
-			_sortByChanged(){
+			_sortByChanged() {
 				var sorts = [];
-				for(var i = 0; i < this.allItems.length; i++){
+				for (var i = 0; i < this.allItems.length; i++) {
 					sorts.push({
 						"allItemsIndex": i,
 						"name": this.allItems[i].name,
@@ -243,29 +243,29 @@
 					});
 				}
 
-				switch(this.sortBy){
+				switch (this.sortBy) {
 					case "standard":
-						sorts.sort(function(a, b){
+						sorts.sort(function(a, b) {
 							return a.allItemsIndex - b.allItemsIndex;
 						});
 						break;
 					case "alphabetically":
-						sorts.sort(function(a, b){
+						sorts.sort(function(a, b) {
 							return a.name.localeCompare(b.name);
 						});
 						break;
 					case "cheapest":
-						sorts.sort(function(a, b){
+						sorts.sort(function(a, b) {
 							return a.price - b.price;
 						});
-					break;
+						break;
 					case "expensivest":
-						sorts.sort(function(a, b){
+						sorts.sort(function(a, b) {
 							return b.price - a.price;
 						});
 						break;
 				}
-				for(var i = 0; i < sorts.length; i++){
+				for (var i = 0; i < sorts.length; i++) {
 
 					this.allItems[sorts[i].allItemsIndex].order = i;
 					this.notifyPath("allItems." + sorts[i].allItemsIndex + ".order");

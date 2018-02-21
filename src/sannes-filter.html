@@ -166,89 +166,87 @@
 			}
 
     </style>
+		<div id="container">
+			<paper-tabs selected="{{selected}}">
+			  <paper-tab>Filtrera</paper-tab>
+			  <paper-tab>Avancerad filtrering</paper-tab>
+			</paper-tabs>
 
-			<div id="container">
-				<paper-tabs selected="{{selected}}">
-				  <paper-tab>Filtrera</paper-tab>
-				  <paper-tab>Avancerad filtrering</paper-tab>
-				</paper-tabs>
-
-				<div id="subcontainer">
-					<iron-pages selected="{{selected}}">
-					  <div>
-							<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-							<div class="checkboxGrid">
-								<div class="checkboxColumn">
-									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
-									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
-									<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
-									<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
-								</div>
-								<div class="checkboxColumn">
-									<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
-									<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
-									<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
-								</div>
+			<div id="subcontainer">
+				<iron-pages selected="{{selected}}">
+				  <div>
+						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
+						<div class="checkboxGrid">
+							<div class="checkboxColumn">
+								<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+								<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+								<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+								<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
 							</div>
-							<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
-							<div>
-								<div class="checkboxColumn">
-									<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
-								</div>
-								<div class="checkboxColumn">
-									<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
-								</div>
-
+							<div class="checkboxColumn">
+								<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+								<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+								<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
 							</div>
-							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
-								<div slot="suffix">kr</div>
-							</paper-input>
-							<div id="ingredientsFiltersContainer">
-								<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
-								<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
-							</div>
-							<paper-dropdown-menu id="sortByDropdown" label="Sortera efter" on-iron-select="_sortChanged">
-					      <paper-listbox slot="dropdown-content" class="dropdown-content" selected="3">
-					        <paper-item>Billigaste först</paper-item>
-					        <paper-item>Dyrast först</paper-item>
-					        <paper-item>Bokstavsordning</paper-item>
-					        <paper-item>Grupper</paper-item>
-					      </paper-listbox>
-					    </paper-dropdown-menu>
 						</div>
-					  <div>
-							<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
-							</paper-input>
+						<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
+						<div>
+							<div class="checkboxColumn">
+								<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
+							</div>
+							<div class="checkboxColumn">
+								<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
+							</div>
 
-							<paper-button raised on-tap="_expandadvancedSearchCollapse">
-								Hur använder man avancerad filtrering?
-							</paper-button>
-
-							<iron-collapse id="advancedSearchCollapse">
-								<h3>Söka efter kategori</h3>
-								<p> Detta nedan kommer att visa allting</p>
-								<p class="code">pizza rullar sallader tallrik hamburgare pasta lasagne</p>
-								<p> Eller så kan du använda följande för att visa allt</p>
-								<p class="code">*</p>
-								<h3>Lägg till ingredienser</h3>
-								<p class="code">+skinka +champinjoner +ananas</p>
-								<h3>Ta bort ingredienser</h3>
-								<p class="code">-köttfärs -feferoni</p>
-								<h3>Ingredienser som är fler än 1 ord</h3>
-								<p class="code">+färska_tomater -färsk_vitlök</p>
-								<h3>Söka efter namn</h3>
-								<p class="code">"Kebabpizza"</p>
-								<h3>Söka efter om den är stark och vegetarisk</h3>
-								<p class="code">%vegetarisk %stark</p>
-								<h3>Exempel:</h3>
-								<p class="code">+ananas -skinka pizza %vegetarisk</p>
-							</iron-collapse>
 						</div>
-					</iron-pages>
-				</div>
-	    </div>
-		</div>
-  </template>
+						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
+							<div slot="suffix">kr</div>
+						</paper-input>
+						<div id="ingredientsFiltersContainer">
+							<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
+							<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
+						</div>
+						<paper-dropdown-menu id="sortByDropdown" label="Sortera efter" on-iron-select="_sortChanged">
+				      <paper-listbox slot="dropdown-content" class="dropdown-content" selected="3">
+				        <paper-item>Billigaste först</paper-item>
+				        <paper-item>Dyrast först</paper-item>
+				        <paper-item>Bokstavsordning</paper-item>
+				        <paper-item>Grupper</paper-item>
+				      </paper-listbox>
+				    </paper-dropdown-menu>
+					</div>
+				  <div>
+						<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
+						</paper-input>
+
+						<paper-button raised on-tap="_expandadvancedSearchCollapse">
+							Hur använder man avancerad filtrering?
+						</paper-button>
+
+						<iron-collapse id="advancedSearchCollapse">
+							<h3>Söka efter kategori</h3>
+							<p> Detta nedan kommer att visa allting</p>
+							<p class="code">pizza rullar sallader tallrik hamburgare pasta lasagne</p>
+							<p> Eller så kan du använda följande för att visa allt</p>
+							<p class="code">*</p>
+							<h3>Lägg till ingredienser</h3>
+							<p class="code">+skinka +champinjoner +ananas</p>
+							<h3>Ta bort ingredienser</h3>
+							<p class="code">-köttfärs -feferoni</p>
+							<h3>Ingredienser som är fler än 1 ord</h3>
+							<p class="code">+färska_tomater -färsk_vitlök</p>
+							<h3>Söka efter namn</h3>
+							<p class="code">"Kebabpizza"</p>
+							<h3>Söka efter om den är stark och vegetarisk</h3>
+							<p class="code">%vegetarisk %stark</p>
+							<h3>Exempel:</h3>
+							<p class="code">+ananas -skinka pizza %vegetarisk</p>
+						</iron-collapse>
+					</div>
+				</iron-pages>
+			</div>
+    </div>
+	</template>
 	<script>
 		class SannesFilter extends Polymer.Element {
 			static get is() {
@@ -336,20 +334,20 @@
 						notify: true,
 						value: "",
 					},
-					largestPrice:{
+					largestPrice: {
 						type: Number,
 						notify: true
 					},
-					smallestPrice:{
+					smallestPrice: {
 						type: Number,
 						notify: true
 					},
-					selectedSortBy:{
+					selectedSortBy: {
 						type: Number,
 						notify: true,
 						value: 3
 					},
-					sortBy:{
+					sortBy: {
 						type: String,
 						notify: true,
 						value: "standard" //alphabetically, cheapest, expensivest
@@ -411,9 +409,9 @@
 				this.searchTerm = this.searchTerm.replace(/\s\s+/g, ' ').replace(/ $/, "").toLowerCase();
 			}
 
-			_sortChanged(e){
+			_sortChanged(e) {
 				var selectedId = e.target.selected;
-				switch(selectedId){
+				switch (selectedId) {
 					case 0:
 						this.sortBy = "cheapest";
 						break;
