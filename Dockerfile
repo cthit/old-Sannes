@@ -19,6 +19,7 @@ RUN bower install
 RUN polymer build
 
 COPY /data /app/build/default/data
+COPY /res /app/build/default/res
 
 #PRODUCTION STAGE
 

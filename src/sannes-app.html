@@ -20,13 +20,22 @@
         height:103px;
         line-height: 103px;
         background-color: #44aedb;
-      }
+				display:flex;
+				justify-content: center;
+			}
 
       #header > h1{
         color:white;
-        text-align: center;
-        margin:0;
+				margin:0;
       }
+
+			#header > img{
+				display: block;
+		    max-width: 35px;
+		    max-height: 35px;
+		    margin-top: auto;
+		    margin-bottom: auto;
+			}
 
       #content{
         background-color: #F7F7F7;
@@ -65,7 +74,8 @@
 		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
 		<div id="header">
-			<h1>🍕Sannes</h1>
+			<img src="/res/pizza.png" alt="pizza <3"/>
+			<h1>Sannes</h1>
 		</div>
 
 		<div id="content">
