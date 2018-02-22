@@ -2,7 +2,7 @@ FROM node:8.9.4 as buildStage
 
 WORKDIR /app
 
-COPY . /app
+COPY bower.json /app
 
 USER root:root
 
@@ -14,7 +14,9 @@ RUN npm install -g polymer-cli --unsafe-perm
 
 USER node:users
 
-RUN bower install
+RUN bower install --allow-root
+
+COPY . /app
 
 EXPOSE 8081
 
