@@ -200,7 +200,7 @@
 			},
 			"bombay": {
 				"id": 9,
-				"type": "baked",
+				"type": "pizza",
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
