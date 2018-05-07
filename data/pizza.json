@@ -1177,10 +1177,10 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"bacon", "äggula", "svartpeppar", "gräddsås"
+				"pasta", "bacon", "äggula", "svartpeppar", "gräddsås"
 			],
 			"hidden_ingredients": [
-				"pasta"
+
 			],
 			"price": 80
 		},
@@ -1189,10 +1189,10 @@
 			"veg": true,
 			"spicy": false,
 			"ingredients": [
-				"champinjoner", "tomat", "strimlad feferoni", "fetaost", "lök", "gräddsås", "tomatsås"
+				"pasta", "champinjoner", "tomat", "strimlad feferoni", "fetaost", "lök", "gräddsås", "tomatsås"
 			],
 			"hidden_ingredients": [
-				"pasta"
+
 			],
 			"price": 85
 		},
@@ -1201,10 +1201,10 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kyckling", "banan", "ananas", "jordnötter", "curry"
+				"pasta", "kyckling", "banan", "ananas", "jordnötter", "curry"
 			],
 			"hidden_ingredients": [
-				"pasta"
+
 			],
 			"price": 85
 		},
@@ -1213,10 +1213,10 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"köttfärssås"
+				"pasta", "köttfärssås"
 			],
 			"hidden_ingredients": [
-				"pasta"
+
 			],
 			"price": 80
 		},
@@ -1225,10 +1225,10 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kräftstjärtar", "räkor", "vitlök", "rödlök", "scampi", "gräddsås"
+				"pasta", "kräftstjärtar", "räkor", "vitlök", "rödlök", "scampi", "gräddsås"
 			],
 			"hidden_ingredients": [
-				"pasta"
+
 			],
 			"price": 100
 		}
