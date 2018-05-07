@@ -20,7 +20,8 @@
     "web-animations-js": "^2.3.1",
     "neon-animation": "PolymerElements/neon-animation#^2.2.0",
     "paper-fab": "PolymerElements/paper-fab#^2.1.0",
-    "paper-dialog": "PolymerElements/paper-dialog#^2.1.1"
+    "paper-dialog": "PolymerElements/paper-dialog#^2.1.1",
+    "app-storage": "PolymerElements/app-storage#^2.1.1"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"

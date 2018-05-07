@@ -1,5 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="/bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
 <link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="/bower_components/paper-autocomplete/paper-autocomplete-suggestions.html">
 <link rel="import" href="/bower_components/paper-input/paper-input.html">
@@ -16,7 +18,6 @@
 <link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
 
 <link rel="import" href="sannes-filter-ingredients.html">
-
 
 <dom-module id="sannes-filter">
 	<template>
@@ -166,6 +167,10 @@
 			}
 
     </style>
+
+		<app-localstorage-document key="last_filter_mode_selected" data="{{selected}}">
+		</app-localstorage-document>
+
 		<div id="container">
 			<paper-tabs selected="{{selected}}">
 			  <paper-tab>Filtrera</paper-tab>
@@ -245,7 +250,7 @@
 						<paper-item>Grupper</paper-item>
 					</paper-listbox>
 				</paper-dropdown-menu>
-				
+
 			</div>
     </div>
 	</template>
