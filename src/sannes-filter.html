@@ -206,14 +206,6 @@
 							<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
 							<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
 						</div>
-						<paper-dropdown-menu id="sortByDropdown" label="Sortera efter" on-iron-select="_sortChanged">
-				      <paper-listbox slot="dropdown-content" class="dropdown-content" selected="3">
-				        <paper-item>Billigaste först</paper-item>
-				        <paper-item>Dyrast först</paper-item>
-				        <paper-item>Bokstavsordning</paper-item>
-				        <paper-item>Grupper</paper-item>
-				      </paper-listbox>
-				    </paper-dropdown-menu>
 					</div>
 				  <div>
 						<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
@@ -244,6 +236,16 @@
 						</iron-collapse>
 					</div>
 				</iron-pages>
+
+				<paper-dropdown-menu id="sortByDropdown" label="Sortera efter" on-iron-select="_sortChanged">
+					<paper-listbox slot="dropdown-content" class="dropdown-content" selected="3">
+						<paper-item>Billigaste först</paper-item>
+						<paper-item>Dyrast först</paper-item>
+						<paper-item>Bokstavsordning</paper-item>
+						<paper-item>Grupper</paper-item>
+					</paper-listbox>
+				</paper-dropdown-menu>
+				
 			</div>
     </div>
 	</template>
