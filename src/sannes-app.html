@@ -1,9 +1,17 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="/bower_components/neon-animation/web-animations.html">
+<link rel="import" href="/bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
+
 <link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-icons/communication-icons.html">
 
 <link rel="import" href="/bower_components/paper-styles/shadow.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="/bower_components/paper-styles/color.html">
 <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 
 <link rel="import" href="sannes-group.html">
 <link rel="import" href="sannes-filter.html">
@@ -69,6 +77,27 @@
         display: none !important;
       }
 
+			paper-fab{
+				background-color: #FF9800;
+				position:fixed;
+				z-index: 10;
+				bottom:25px;
+				right:25px;
+			}
+
+			paper-button.orange{
+				color: #FF9800;
+			}
+
+			#dialog .content{
+				text-align: center;
+				padding:10px;
+			}
+
+			#dialog .content a{
+				font-size: 1.2em;
+			}
+
     </style>
 
 		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
@@ -102,6 +131,20 @@
 		    </template>
 			</div>
 		</div>
+
+		<paper-fab onclick="dialog.open()" icon="communication:call" title="Öppna telefonnummer till Sannegården">
+		</paper-fab>
+
+		<paper-dialog id="dialog" modal  entry-animation="fade-in-animation"
+              exit-animation="fade-out-animation">
+		  <h2 class="header">Telefonnummer till Sannegården Johanneberg:</h2>
+			<div class="content">
+				<a href="tel:031162613">031-16 26 13</a>
+			</div>
+		  <div class="buttons">
+		    <paper-button dialog-confirm class="orange">Stäng</paper-button>
+		  </div>
+		</paper-dialog>
 
 		<footer>
 			<h4>Think with Portals ❤</h4>
