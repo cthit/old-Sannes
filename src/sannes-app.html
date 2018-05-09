@@ -132,7 +132,7 @@
 			</div>
 		</div>
 
-		<paper-fab onclick="dialog.open()" icon="communication:call" title="Öppna telefonnummer till Sannegården">
+		<paper-fab on-tap="_openPhoneDialog" icon="communication:call" title="Öppna telefonnummer till Sannegården">
 		</paper-fab>
 
 		<paper-dialog id="dialog" modal  entry-animation="fade-in-animation"
@@ -400,6 +400,10 @@
 				} else {
 					this.$.pizzasContainer.classList.remove("hidden");
 				}
+			}
+
+			_openPhoneDialog(){
+				this.$.dialog.open();
 			}
 		}
 
