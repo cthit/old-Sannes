@@ -66,11 +66,13 @@
 				line-height: 20px;
 			}
 
-			.flexContainer {
-				width: 100%;
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: flex-start;
+			.gridContainer {
+				display: grid;
+				grid-gap: 4px;
+				grid-template-columns: repeat(auto-fit, minmax(min-content, 300px));
+
+				justify-content: center;
+				align-content: center;
 			}
 
 			.hidden {
@@ -98,7 +100,10 @@
 				font-size: 1.2em;
 			}
 
-			.centralize {}
+			.flexColumn {
+				display: flex;
+				flex-direction: column;
+			}
 		</style>
 
 		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
@@ -116,7 +121,7 @@
 			<h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
 			<div class="centralize">
-				<div id="resultContainer" class="flexContainer hidden">
+				<div id="resultContainer" class="gridContainer hidden">
 					<template is="dom-repeat" items="[[allItems]]">
 						<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]"
 						 should-filter alias="[[alias]]"></sannes-item>
@@ -124,16 +129,18 @@
 				</div>
 			</div>
 
-			<div id="pizzasContainer">
-				<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-					<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-				</template>
-			</div>
+			<div class="flexColumn">
+				<div id="pizzasContainer" class="flexColumn">
+					<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
+						<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+					</template>
+				</div>
 
-			<div id="otherContainer">
-				<template is="dom-repeat" items="[[others]]">
-					<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-				</template>
+				<div id="otherContainer" class="flexColumn">
+					<template is="dom-repeat" items="[[others]]">
+						<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+					</template>
+				</div>
 			</div>
 		</div>
 

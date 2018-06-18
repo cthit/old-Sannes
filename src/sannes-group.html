@@ -10,11 +10,13 @@
 			}
 
 			#items {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: flex-start;
-				margin-left: auto;
-				margin-right: auto;
+				width: 100%;
+				display: grid;
+				grid-gap: 4px;
+				grid-template-columns: repeat(auto-fit, minmax(min-content, 300px));
+
+				justify-content: center;
+				align-content: center;
 			}
 
 			.hidden {
