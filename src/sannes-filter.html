@@ -166,6 +166,13 @@
 				margin-top:25px;
 			}
 
+			.center{
+				max-width:305px;
+				margin-left:auto;
+				margin-right:auto;
+				display:block;
+			}
+
     </style>
 
 		<app-localstorage-document key="last_filter_mode_selected" data="{{selected}}">
@@ -180,33 +187,34 @@
 			<div id="subcontainer">
 				<iron-pages selected="{{selected}}">
 				  <div>
-						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-						<div class="checkboxGrid">
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
-								<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
-								<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
-								<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
+						<div class="center">
+							<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
+							<div class="checkboxGrid">
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+									<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+									<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
+								</div>
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+									<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+									<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+								</div>
 							</div>
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
-								<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
-								<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+							<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
+							<div>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
+								</div>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
+								</div>
 							</div>
+							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
+								<div slot="suffix">kr</div>
+							</paper-input>
 						</div>
-						<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
-						<div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
-							</div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
-							</div>
-
-						</div>
-						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
-							<div slot="suffix">kr</div>
-						</paper-input>
 						<div id="ingredientsFiltersContainer">
 							<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
 							<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>

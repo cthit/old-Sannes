@@ -71,7 +71,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-      }
+			}
 
       .hidden{
         display: none !important;
@@ -98,6 +98,10 @@
 				font-size: 1.2em;
 			}
 
+			.centralize{
+				
+			}
+
     </style>
 
 		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
@@ -113,10 +117,12 @@
 			</div>
 			<h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
-			<div id="resultContainer" class="flexContainer hidden">
-				<template is="dom-repeat" items="[[allItems]]">
-        	<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
-        </template>
+			<div class="centralize">
+				<div id="resultContainer" class="flexContainer hidden">
+					<template is="dom-repeat" items="[[allItems]]">
+	        	<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
+	        </template>
+				</div>
 			</div>
 
 			<div id="pizzasContainer">
