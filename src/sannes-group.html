@@ -4,30 +4,31 @@
 
 <dom-module id="sannes-group">
 	<template>
-    <style>
-      :host{
-        display: inline-block;
-      }
+		<style>
+			:host {
+				display: inline-block;
+			}
 
-      #items{
-        display:flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin-left: auto;
-        margin-right: auto;
-      }
+			#items {
+				width: 100%;
+				display: grid;
+				grid-gap: 4px;
+				grid-template-columns: repeat(auto-fit, minmax(min-content, 300px));
 
-      .hidden{
-        display:none;
-      }
+				justify-content: center;
+				align-content: center;
+			}
 
-    </style>
+			.hidden {
+				display: none;
+			}
+		</style>
 
-    <h2 id="header">[[groupName]]</h2>
-    <div id="items">
-      <template is="dom-repeat" items="[[_toArray(groupData)]]">
-        <sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-item>
-      </template>
+		<h2 id="header">[[groupName]]</h2>
+		<div id="items">
+			<template is="dom-repeat" items="[[_toArray(groupData)]]">
+				<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" search-term="{{searchTerm}}" alias="[[alias]]"></sannes-item>
+			</template>
 		</div>
 	</template>
 	<script>
@@ -52,7 +53,7 @@
 					},
 					items: {
 						type: Array,
-						value: function() {
+						value: function () {
 							return [];
 						}
 					},
@@ -83,7 +84,7 @@
 			}
 
 			_toArray(obj) {
-				return Object.keys(obj).map(function(key) {
+				return Object.keys(obj).map(function (key) {
 					return {
 						name: key,
 						value: obj[key]

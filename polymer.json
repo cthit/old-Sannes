@@ -1,12 +1,12 @@
 {
   "lint": {
-    "rules": [
-      "polymer-2"
-    ]
+    "rules": ["polymer-2"]
   },
-  "builds": [{
-    "js": {"minify": true},
-    "css": {"minify": true},
-    "html": {"minify": true}
-  }]
+  "builds": [
+    {
+      "js": { "minify": true },
+      "css": { "minify": true },
+      "html": { "minify": true }
+    }
+  ]
 }

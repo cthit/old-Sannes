@@ -21,198 +21,208 @@
 
 <dom-module id="sannes-filter">
 	<template>
-    <style>
-      #container{
-				max-width:700px;
-        @apply --shadow-elevation-2dp;
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-			#subcontainer{
-				padding:24px;
+		<style>
+			#container {
+				max-width: 700px;
+				@apply --shadow-elevation-2dp;
+				background-color: white;
+				margin-left: auto;
+				margin-right: auto;
 			}
 
-      #itemFiltersContainer{
-        margin-top:10px;
-      }
+			#subcontainer {
+				padding: 24px;
+			}
 
-      #maxCostLabel{
-        max-width:250px;
-      }
+			#itemFiltersContainer {
+				margin-top: 10px;
+			}
 
-      #ingredientsContainer{
-        max-width:300px;
-      }
+			#maxCostLabel {
+				max-width: 250px;
+			}
 
-      #autocompleteSuggestions{
-        --suggestions-wrapper:{
-          max-width:300px;
-        }
-      }
+			#ingredientsContainer {
+				max-width: 300px;
+			}
 
-      #containerHeader{
-        margin-top:0px;
-        margin-bottom:20px;
-      }
+			#autocompleteSuggestions {
+				--suggestions-wrapper: {
+					max-width: 300px;
+				}
+			}
 
-			paper-input{
+			#containerHeader {
+				margin-top: 0px;
+				margin-bottom: 20px;
+			}
+
+			paper-input {
 				--paper-input-container-focus-color: #FF9800;
 			}
 
-			paper-checkbox{
-				display:block;
+			paper-checkbox {
+				display: block;
 				margin-bottom: 15px;
 				--paper-checkbox-checked-color: #FF9800;
- 				--paper-checkbox-checked-ink-color: #FF9800;
+				--paper-checkbox-checked-ink-color: #FF9800;
 			}
 
-			.checkboxGrid{
-				display:flex;
+			.checkboxGrid {
+				display: flex;
 				flex-wrap: wrap;
 			}
 
-			.checkboxColumn{
-				display:inline-block;
-				width:150px;
+			.checkboxColumn {
+				display: inline-block;
+				width: 150px;
 			}
 
-			.checkboxColumn > paper-checkbox{
-				display:block;
+			.checkboxColumn>paper-checkbox {
+				display: block;
 			}
 
-			paper-tabs{
+			paper-tabs {
 				background-color: #44aedb;
 				--paper-tabs-selection-bar-color: #FF9800;
 			}
 
-			paper-tab{
+			paper-tab {
 				color: white;
 				--paper-tab-ink: #FF9800;
 			}
 
-			#nameOfArticle{
+			#nameOfArticle {
 				max-width: 300px;
 				margin-bottom: 15px;
 			}
 
-			#advancedSearchInput{
-				margin-bottom:15px;
+			#advancedSearchInput {
+				margin-bottom: 15px;
 			}
 
 			paper-button {
-			  text-transform: none;
+				text-transform: none;
 			}
 
-			.code{
-				padding:2px;
-				display:inline-block;
-				background-color: rgba(27,31,35,0.05)
+			.code {
+				padding: 2px;
+				display: inline-block;
+				background-color: rgba(27, 31, 35, 0.05)
 			}
 
-			#onlyVegetarian{
+			#onlyVegetarian {
 				margin-top: 15px;
 				margin-bottom: 15px;
 			}
 
-			#onlySpicy{
+			#onlySpicy {
 				margin-top: 15px;
 				margin-bottom: 15px;
 			}
 
-			paper-toggle-button{
-				--paper-toggle-button-checked-bar-color:  #FF9800;
-				--paper-toggle-button-checked-button-color:  #FF9800;
+			paper-toggle-button {
+				--paper-toggle-button-checked-bar-color: #FF9800;
+				--paper-toggle-button-checked-button-color: #FF9800;
 				--paper-toggle-button-checked-ink-color: #FF9800;
 			}
 
-			#advancedSearchCollapse > *{
-				margin-top:8px;
-				margin-bottom:8px;
+			#advancedSearchCollapse>* {
+				margin-top: 8px;
+				margin-bottom: 8px;
 			}
 
-			.normalWeightHeader{
+			.normalWeightHeader {
 				font-weight: normal;
 			}
 
-			#addIngredientsFilter{
+			#addIngredientsFilter {
 				--active-background-color: #C8E6C9;
 			}
 
-			#removeIngredientsFilter{
+			#removeIngredientsFilter {
 				--active-background-color: #FFCDD2;
 			}
 
-			#addIngredientsFilter, #removeIngredientsFilter{
-				width:250px;
+			#addIngredientsFilter,
+			#removeIngredientsFilter {
+				width: 250px;
 			}
 
-			#ingredientsFiltersContainer{
-				margin-top:25px;
+			#ingredientsFiltersContainer {
+				margin-top: 25px;
 				display: flex;
-		    flex-wrap: wrap;
-		    align-items: flex-end;
-		    justify-content: space-between;
+				flex-wrap: wrap;
+				align-items: flex-end;
+				justify-content: space-between;
 			}
 
-			#onlyPizzaButton{
-				margin-top:10px;
-				margin-left:0px;
-				margin-bottom:10px;
+			#onlyPizzaButton {
+				margin-top: 10px;
+				margin-left: 0px;
+				margin-bottom: 10px;
 			}
 
-			#sortByDropdown{
-				margin-top:25px;
+			#sortByDropdown {
+				margin-top: 25px;
 			}
 
-    </style>
+			.center {
+				max-width: 305px;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+		</style>
 
 		<app-localstorage-document key="last_filter_mode_selected" data="{{selected}}">
 		</app-localstorage-document>
 
 		<div id="container">
 			<paper-tabs selected="{{selected}}">
-			  <paper-tab>Filtrera</paper-tab>
-			  <paper-tab>Avancerad filtrering</paper-tab>
+				<paper-tab>Filtrera</paper-tab>
+				<paper-tab>Avancerad filtrering</paper-tab>
 			</paper-tabs>
 
 			<div id="subcontainer">
 				<iron-pages selected="{{selected}}">
-				  <div>
-						<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
-						<div class="checkboxGrid">
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
-								<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
-								<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
-								<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
+					<div>
+						<div class="center">
+							<paper-input id="nameOfArticle" label="Namn på artikeln" value="{{articleName}}"></paper-input>
+							<div class="checkboxGrid">
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPizzas}}">Pizzor</paper-checkbox>
+									<paper-checkbox checked active="{{showPastas}}">Pasta</paper-checkbox>
+									<paper-checkbox checked active="{{showRolls}}">Rullar</paper-checkbox>
+									<paper-checkbox checked active="{{showLasagna}}">Lasagne</paper-checkbox>
+								</div>
+								<div class="checkboxColumn">
+									<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
+									<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
+									<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+								</div>
 							</div>
-							<div class="checkboxColumn">
-								<paper-checkbox checked active="{{showPlates}}">Tallrikar</paper-checkbox>
-								<paper-checkbox checked active="{{showSalads}}">Sallad</paper-checkbox>
-								<paper-checkbox checked active="{{showHamburgers}}">Hamburgare</paper-checkbox>
+							<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
+							<div>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
+								</div>
+								<div class="checkboxColumn">
+									<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
+								</div>
 							</div>
+							<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"
+							 auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
+								<div slot="suffix">kr</div>
+							</paper-input>
 						</div>
-						<paper-button id="onlyPizzaButton" raised on-tap="_onlyPizza">Ge mig bara pizzor</paper-button>
-						<div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlyVegetarian" active="{{onlyVegetarian}}">Vegetariskt</paper-toggle-button>
-							</div>
-							<div class="checkboxColumn">
-								<paper-toggle-button id="onlySpicy" active="{{onlySpicy}}">Stark</paper-toggle-button>
-							</div>
-
-						</div>
-						<paper-input id="maxCostLabel" label="Max kostnad" value="{{maxCostString}}" type="number" min="{{smallestPrice}}" max="{{largestPrice}}"  auto-validate error-message="{{smallestPrice}} <= Kostnad <= {{largestPrice}}">
-							<div slot="suffix">kr</div>
-						</paper-input>
 						<div id="ingredientsFiltersContainer">
 							<sannes-filter-ingredients id="addIngredientsFilter" label-text="Vilka ingredienser du vill ha" active-color="#A5D6A7" ingredients-filtered="{{ingredientsToAdd}}"></sannes-filter-ingredients>
-							<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A" ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
+							<sannes-filter-ingredients id="removeIngredientsFilter" label-text="Vilka ingredienser du inte vill ha" active-color="#EF9A9A"
+							 ingredients-filtered="{{ingredientsToRemove}}"></sannes-filter-ingredients>
 						</div>
 					</div>
-				  <div>
+					<div>
 						<paper-input id="advancedSearchInput" label="Sökterm" value="{{searchTermAdvancedInput}}">
 						</paper-input>
 
@@ -252,7 +262,7 @@
 				</paper-dropdown-menu>
 
 			</div>
-    </div>
+		</div>
 	</template>
 	<script>
 		class SannesFilter extends Polymer.Element {

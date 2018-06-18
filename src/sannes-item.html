@@ -2,64 +2,60 @@
 
 <dom-module id="sannes-item">
 	<template>
-    <style>
+		<style>
+			#container {
+				@apply --shadow-elevation-2dp;
+				width: 300px;
+				height: 150px;
+				padding: 8px;
+				margin: 8px;
+				background-color: white;
+				flex-grow: 100;
+			}
 
+			div {
+				display: inline-block;
+			}
 
-      #container{
-        @apply --shadow-elevation-2dp;
-				width:300px;
-        height:150px;
-        padding: 8px;
-        margin-right: 16px;
-        margin-bottom: 16px;
-        background-color: white;
-				flex-grow:100;
-      }
+			#header {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				margin-bottom: 10px;
+			}
 
-      div{
-        display:inline-block;
-      }
+			#header>* {
+				display: inline-block;
+				margin: 0;
+			}
 
-      #header{
-        width:100%;
-        display:flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 10px;
-      }
+			#ingredients {
+				margin-bottom: 10px;
+			}
 
-      #header > *{
-        display:inline-block;
-        margin:0;
-      }
+			.hidden {
+				display: none;
+			}
 
-      #ingredients{
-        margin-bottom: 10px;
-      }
-
-      .hidden{
-        display:none;
-      }
-
-			.veg{
+			.veg {
 				background-color: #E8F5E9 !important;
 			}
 
-			.spicy{
+			.spicy {
 				background-color: #FFEBEE !important;
 			}
+		</style>
 
-    </style>
-
-    <div id="container">
-      <div id="header">
-        <h3>[[itemHeader]]</h3>
-        <h4>[[itemPrice]]</h4>
-      </div>
-      <div id="ingredients">
-        <template is="dom-repeat" items="[[itemData.ingredients]]">
-          [[_beautifyIngredient(index, item)]]
-        </template>
+		<div id="container">
+			<div id="header">
+				<h3>[[itemHeader]]</h3>
+				<h4>[[itemPrice]]</h4>
+			</div>
+			<div id="ingredients">
+				<template is="dom-repeat" items="[[itemData.ingredients]]">
+					[[_beautifyIngredient(index, item)]]
+				</template>
 			</div>
 		</div>
 	</template>
@@ -75,7 +71,7 @@
 						type: String,
 						notify: true
 					},
-					itemOrder:{
+					itemOrder: {
 						type: Number,
 						notify: true,
 						observer: '_itemOrderUpdated'
@@ -146,7 +142,7 @@
 				}
 			}
 
-			_itemOrderUpdated(){
+			_itemOrderUpdated() {
 				this.style.order = this.itemOrder;
 			}
 
