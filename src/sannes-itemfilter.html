@@ -6,29 +6,25 @@
 
 <dom-module id="sannes-itemfilter">
 	<template>
-    <style>
-      :host{
-      }
+		<style>
+			#container {
+				display: flex;
+				justify-content: space-between;
+			}
 
-      #container{
-        display:flex;
-        justify-content: space-between;
-      }
+			#textDiv {
+				line-height: 40px;
+			}
+		</style>
 
-      #textDiv{
-        line-height:40px;
-      }
+		<div id="container">
+			<div id="textDiv">
+				[[itemName]]
+			</div>
+			<paper-icon-button icon="cancel" on-tap="_removeItemFilter"></paper-icon-button>
+		</div>
 
-    </style>
-
-    <div id="container">
-      <div id="textDiv">
-        [[itemName]]
-      </div>
-      <paper-icon-button icon="cancel" on-tap="_removeItemFilter"></paper-icon-button>
-    </div>
-
-  </template>
+	</template>
 	<script>
 		class SannesItemfilter extends Polymer.Element {
 			static get is() {

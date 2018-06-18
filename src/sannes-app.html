@@ -18,138 +18,136 @@
 
 <dom-module id="sannes-app">
 	<template>
-    <style>
-      :host {
-        display: block;
-      }
+		<style>
+			:host {
+				display: block;
+			}
 
-      #header{
-        width:100%;
-        height:103px;
-        line-height: 103px;
-        background-color: #44aedb;
-				display:flex;
+			#header {
+				width: 100%;
+				height: 103px;
+				line-height: 103px;
+				background-color: #44aedb;
+				display: flex;
 				justify-content: center;
 			}
 
-      #header > h1{
-        color:white;
-				margin:0;
-      }
+			#header>h1 {
+				color: white;
+				margin: 0;
+			}
 
-			#header > img{
+			#header>img {
 				display: block;
-		    max-width: 35px;
-		    max-height: 35px;
-		    margin-top: auto;
-		    margin-bottom: auto;
+				max-width: 35px;
+				max-height: 35px;
+				margin-top: auto;
+				margin-bottom: auto;
 			}
 
-      #content{
-        background-color: #F7F7F7;
+			#content {
+				background-color: #F7F7F7;
 
-        padding-bottom:0px;
-        padding-top:24px;
-        padding-left:10%;
-        padding-right:10%;
+				padding-bottom: 0px;
+				padding-top: 24px;
+				padding-left: 10%;
+				padding-right: 10%;
 			}
 
-      footer{
-        background-color: #F7F7F7;
-        height:20px;
-        padding:20px;
-      }
-
-      footer > h4{
-        text-align:center;
-        margin:0px;
-        line-height:20px;
-      }
-
-      .flexContainer{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+			footer {
+				background-color: #F7F7F7;
+				height: 20px;
+				padding: 20px;
 			}
 
-      .hidden{
-        display: none !important;
-      }
+			footer>h4 {
+				text-align: center;
+				margin: 0px;
+				line-height: 20px;
+			}
 
-			paper-fab{
+			.flexContainer {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+			}
+
+			.hidden {
+				display: none !important;
+			}
+
+			paper-fab {
 				background-color: #FF9800;
-				position:fixed;
+				position: fixed;
 				z-index: 10;
-				bottom:25px;
-				right:25px;
+				bottom: 25px;
+				right: 25px;
 			}
 
-			paper-button.orange{
+			paper-button.orange {
 				color: #FF9800;
 			}
 
-			#dialog .content{
+			#dialog .content {
 				text-align: center;
-				padding:10px;
+				padding: 10px;
 			}
 
-			#dialog .content a{
+			#dialog .content a {
 				font-size: 1.2em;
 			}
 
-			.centralize{
-				
-			}
-
-    </style>
+			.centralize {}
+		</style>
 
 		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
 
 		<div id="header">
-			<img src="/res/pizza.png" alt="pizza <3"/>
+			<img src="/res/pizza.png" alt="pizza <3" />
 			<h1>Sannes</h1>
 		</div>
 
 		<div id="content">
 			<div id="filter">
-				<sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
+				<sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]"
+				 largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
 			</div>
 			<h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
 			<div class="centralize">
 				<div id="resultContainer" class="flexContainer hidden">
 					<template is="dom-repeat" items="[[allItems]]">
-	        	<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
-	        </template>
+						<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]"
+						 should-filter alias="[[alias]]"></sannes-item>
+					</template>
 				</div>
 			</div>
 
 			<div id="pizzasContainer">
 				<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-        	<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-        </template>
+					<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+				</template>
 			</div>
 
 			<div id="otherContainer">
 				<template is="dom-repeat" items="[[others]]">
-	      	<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
-		    </template>
+					<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+				</template>
 			</div>
 		</div>
 
 		<paper-fab on-tap="_openPhoneDialog" icon="communication:call" title="Öppna telefonnummer till Sannegården">
 		</paper-fab>
 
-		<paper-dialog id="dialog" modal  entry-animation="fade-in-animation"
-              exit-animation="fade-out-animation">
-		  <h2 class="header">Telefonnummer till Sannegården Johanneberg:</h2>
+		<paper-dialog id="dialog" modal entry-animation="fade-in-animation" exit-animation="fade-out-animation">
+			<h2 class="header">Telefonnummer till Sannegården Johanneberg:</h2>
 			<div class="content">
 				<a href="tel:031162613">031-16 26 13</a>
 			</div>
-		  <div class="buttons">
-		    <paper-button dialog-confirm class="orange">Stäng</paper-button>
-		  </div>
+			<div class="buttons">
+				<paper-button dialog-confirm class="orange">Stäng</paper-button>
+			</div>
 		</paper-dialog>
 
 		<footer>
@@ -183,7 +181,7 @@
 					},
 					allItems: {
 						type: Array,
-						value: function() {
+						value: function () {
 							return []
 						}
 					},
@@ -304,22 +302,22 @@
 
 				switch (this.sortBy) {
 					case "standard":
-						sorts.sort(function(a, b) {
+						sorts.sort(function (a, b) {
 							return a.allItemsIndex - b.allItemsIndex;
 						});
 						break;
 					case "alphabetically":
-						sorts.sort(function(a, b) {
+						sorts.sort(function (a, b) {
 							return a.name.localeCompare(b.name);
 						});
 						break;
 					case "cheapest":
-						sorts.sort(function(a, b) {
+						sorts.sort(function (a, b) {
 							return a.price - b.price;
 						});
 						break;
 					case "expensivest":
-						sorts.sort(function(a, b) {
+						sorts.sort(function (a, b) {
 							return b.price - a.price;
 						});
 						break;
@@ -347,7 +345,7 @@
 			}
 
 			_removeDuplicates(array) {
-				return array.filter(function(item, index, inputArray) {
+				return array.filter(function (item, index, inputArray) {
 					return inputArray.indexOf(item) == index;
 				});
 			}
@@ -391,7 +389,7 @@
 					return [];
 				}
 
-				return Object.keys(obj).map(function(key) {
+				return Object.keys(obj).map(function (key) {
 					return {
 						name: key,
 						value: obj[key],
@@ -408,7 +406,7 @@
 				}
 			}
 
-			_openPhoneDialog(){
+			_openPhoneDialog() {
 				this.$.dialog.open();
 			}
 		}
