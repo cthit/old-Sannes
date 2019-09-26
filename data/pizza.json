@@ -109,7 +109,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 75,
+				"price": 79,
 				"family_price": 170
 			},
 			"funghi": {
@@ -123,7 +123,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 75,
+				"price": 79,
 				"family_price": 170
 			},
 			"capri": {
@@ -137,7 +137,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 75,
+				"price": 79,
 				"family_price": 170
 			}
 		},
@@ -153,7 +153,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"capricciosa": {
@@ -167,7 +167,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"vesuvio": {
@@ -181,7 +181,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"calzone": {
@@ -195,7 +195,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"bombay": {
@@ -209,7 +209,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"sorento": {
@@ -223,7 +223,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"marinara": {
@@ -237,7 +237,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			},
 			"venezia": {
@@ -251,7 +251,7 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 80,
+				"price": 83,
 				"family_price": 180
 			}
 		},
@@ -267,8 +267,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"kebabpizza": {
 				"id": 14,
@@ -281,8 +281,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"mexicana": {
 				"id": 15,
@@ -295,8 +295,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"primavera": {
 				"id": 16,
@@ -309,8 +309,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"vegetariana": {
 				"id": 17,
@@ -323,8 +323,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"kyckling special": {
 				"id": 18,
@@ -337,8 +337,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"salami": {
 				"id": 19,
@@ -351,8 +351,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"napoli": {
 				"id": 20,
@@ -365,8 +365,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"caruso": {
 				"id": 21,
@@ -379,8 +379,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"quattro stagione": {
 				"id": 22,
@@ -393,8 +393,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"orientale": {
 				"id": 23,
@@ -407,8 +407,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"frutti": {
 				"id": 24,
@@ -421,8 +421,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"bahamas": {
 				"id": 25,
@@ -435,8 +435,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"kung": {
 				"id": 26,
@@ -449,8 +449,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			},
 			"azteka": {
 				"id": 27,
@@ -463,8 +463,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 85,
-				"family_price": 190
+				"price": 89,
+				"family_price": 200
 			}
 		},
 		"4": {
@@ -479,8 +479,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"valentino": {
 				"id": 29,
@@ -493,8 +493,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"ravena": {
 				"id": 30,
@@ -507,8 +507,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"ciao ciao": {
 				"id": 31,
@@ -521,8 +521,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"reale": {
 				"id": 32,
@@ -535,8 +535,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"afrikana": {
 				"id": 33,
@@ -549,8 +549,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"sessan": {
 				"id": 34,
@@ -563,8 +563,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"mafioso": {
 				"id": 35,
@@ -577,8 +577,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"da vinci": {
 				"id": 36,
@@ -591,8 +591,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"verdi": {
 				"id": 37,
@@ -621,8 +621,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"polo": {
 				"id": 39,
@@ -635,8 +635,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 89,
-				"family_price": 200
+				"price": 93,
+				"family_price": 210
 			},
 			"gorgonzola special": {
 				"id": 40,
@@ -649,8 +649,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"ascoli": {
 				"id": 41,
@@ -663,8 +663,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"konya": {
 				"id": 42,
@@ -677,8 +677,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"colombo": {
 				"id": 43,
@@ -691,8 +691,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"istanbul": {
 				"id": 44,
@@ -705,8 +705,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"murres special": {
 				"id": 45,
@@ -719,8 +719,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"chabbe": {
 				"id": 46,
@@ -733,8 +733,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"kicka": {
 				"id": 47,
@@ -747,8 +747,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"daniel special": {
 				"id": 48,
@@ -761,8 +761,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			},
 			"quattro formaggio": {
 				"id": 49,
@@ -775,8 +775,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 95,
-				"family_price": 210
+				"price": 99,
+				"family_price": 220
 			}
 		},
 		"6": {
@@ -791,8 +791,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"imperiale": {
 				"id": 51,
@@ -805,8 +805,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"eldorado": {
 				"id": 52,
@@ -819,8 +819,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"figaro": {
 				"id": 53,
@@ -833,8 +833,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"gudfader": {
 				"id": 54,
@@ -847,8 +847,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"rossi": {
 				"id": 55,
@@ -861,8 +861,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			},
 			"roxanne": {
 				"id": 56,
@@ -875,8 +875,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 99,
-				"family_price": 220
+				"price": 105,
+				"family_price": 230
 			}
 		},
 		"7": {
@@ -905,8 +905,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 105,
-				"family_price": 230
+				"price": 110,
+				"family_price": 240
 			},
 			"havets": {
 				"id": 59,
@@ -919,8 +919,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 105,
-				"family_price": 230
+				"price": 110,
+				"family_price": 240
 			},
 			"barbone": {
 				"id": 60,
@@ -933,8 +933,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 105,
-				"family_price": 230
+				"price": 110,
+				"family_price": 240
 			},
 			"bamse special": {
 				"id": 61,
@@ -947,8 +947,8 @@
 				"hidden_ingredients": [
 					"tomatsås", "ost"
 				],
-				"price": 105,
-				"family_price": 230
+				"price": 110,
+				"family_price": 240
 			}
 		},
 		"8": {
@@ -964,7 +964,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 110,
-				"family_price": 230
+				"family_price": 240
 			},
 			"scampi": {
 				"id": 63,
@@ -978,7 +978,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 110,
-				"family_price": 230
+				"family_price": 240
 			},
 			"ruccola": {
 				"id": 64,
@@ -992,7 +992,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 110,
-				"family_price": 230
+				"family_price": 240
 			},
 			"pesto": {
 				"id": 65,
@@ -1006,7 +1006,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 110,
-				"family_price": 230
+				"family_price": 240
 			},
 			"supervego": {
 				"id": 66,
@@ -1020,7 +1020,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 110,
-				"family_price": 230
+				"family_price": 240
 			}
 		}
 	},
@@ -1035,7 +1035,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 80
+			"price": 85
 		},
 		"falafelrulle": {
 			"type": "roll",
@@ -1047,7 +1047,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 85
+			"price": 90
 		},
 		"husets kebabrulle": {
 			"type": "roll",
@@ -1059,7 +1059,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 85
+			"price": 90
 		},
 		"kycklingrulle": {
 			"type": "roll",
@@ -1071,7 +1071,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 85
+			"price": 90
 		}
 	},
 	"hamburgers": {
@@ -1085,7 +1085,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 80
+			"price": 85
 		},
 		"kyckling-salladsburgare": {
 			"type": "hamburger",
@@ -1097,7 +1097,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 80
+			"price": 85
 		},
 		"grekisk salladsburgare": {
 			"type": "hamburger",
@@ -1109,7 +1109,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 80
+			"price": 85
 		},
 		"alfaburgare": {
 			"type": "hamburger",
@@ -1121,7 +1121,7 @@
 			"hidden_ingredients": [
 				"bröd"
 			],
-			"price": 80
+			"price": 90
 		}
 	},
 	"roasts": {
@@ -1132,7 +1132,7 @@
 			"ingredients": [
 				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kebabkött", "pommes frites eller ris"
 			],
-			"price": 85
+			"price": 90
 		},
 		"falafeltallrik": {
 			"type": "plate",
@@ -1141,7 +1141,7 @@
 			"ingredients": [
 				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "falafel", "pommes frites eller ris"
 			],
-			"price": 85
+			"price": 90
 		},
 		"kycklingtallrik": {
 			"type": "plate",
@@ -1150,16 +1150,16 @@
 			"ingredients": [
 				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kyckling", "pommes frites eller ris"
 			],
-			"price": 85
+			"price": 90
 		},
-		"kebab i bröd": {
+		"kebab med bröd": {
 			"type": "plate",
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
 				"kebabkött", "feferoni", "isbergssallad", "lök", "gurka", "färska tomater", "mild kebabsås"
 			],
-			"price": 80
+			"price": 85
 		},
 		"pommestallrik": {
 			"type": "plate",
@@ -1168,7 +1168,7 @@
 			"ingredients": [
 				"pommes frites"
 			],
-			"price": 35
+			"price": 40
 		}
 	},
 	"pastas": {
@@ -1182,7 +1182,7 @@
 			"hidden_ingredients": [
 
 			],
-			"price": 80
+			"price": 85
 		},
 		"vegetale": {
 			"type": "pasta",
@@ -1194,7 +1194,7 @@
 			"hidden_ingredients": [
 
 			],
-			"price": 85
+			"price": 89
 		},
 		"africana": {
 			"type": "pasta",
@@ -1206,7 +1206,7 @@
 			"hidden_ingredients": [
 
 			],
-			"price": 85
+			"price": 89
 		},
 		"bolognese": {
 			"type": "pasta",
@@ -1218,7 +1218,7 @@
 			"hidden_ingredients": [
 
 			],
-			"price": 80
+			"price": 85
 		},
 		"havets pasta": {
 			"type": "pasta",
@@ -1230,7 +1230,7 @@
 			"hidden_ingredients": [
 
 			],
-			"price": 100
+			"price": 105
 		}
 	},
 	"salads": {
@@ -1241,7 +1241,7 @@
 			"ingredients": [
 				"ananas", "majs", "gurka", "färska tomater", "isbergssallad", "ost", "skinka", "valfri sås"
 			],
-			"price": 80
+			"price": 85
 		},
 		"kycklingsallad": {
 			"type": "salad",
@@ -1250,7 +1250,7 @@
 			"ingredients": [
 				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
-			"price": 85
+			"price": 90
 		},
 		"grekisk": {
 			"type": "salad",
@@ -1259,7 +1259,7 @@
 			"ingredients": [
 				"fetaost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
-			"price": 80
+			"price": 85
 		},
 		"tonfisksallad": {
 			"type": "salad",
@@ -1268,7 +1268,7 @@
 			"ingredients": [
 				"tonfisk", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
-			"price": 80
+			"price": 85
 		},
 		"kebabsallad": {
 			"type": "salad",
@@ -1277,7 +1277,7 @@
 			"ingredients": [
 				"kebabkött", "feferoni", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
-			"price": 85
+			"price": 90
 		},
 		"kräftsallad": {
 			"type": "salad",
@@ -1286,7 +1286,7 @@
 			"ingredients": [
 				"kräftstjärtar", "räkor", "rödlök", "gurka", "färska tomater", "isbergssallad", "valfri sås"
 			],
-			"price": 85
+			"price": 90
 		}
 	},
 	"lasagna": {
@@ -1294,19 +1294,19 @@
 			"type": "lasagna",
 			"veg": false,
 			"spicy": false,
-			"price": 80
+			"price": 85
 		},
 		"lasagne mexicana": {
 			"type": "lasagna",
 			"veg": false,
 			"spicy": true,
-			"price": 80
+			"price": 90
 		},
 		"lasagne gorgonzola": {
 			"type": "lasagna",
 			"veg": false,
 			"spicy": false,
-			"price": 85
+			"price": 90
 		}
 	}
 }
