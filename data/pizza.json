@@ -1305,6 +1305,15 @@
 			"veg": false,
 			"spicy": false,
 			"price": 90
+		},
+		"du vann du vann du vann du vann du vann du vann": {
+			"type": "hamburger",
+			"veg": true,
+			"spicy": true,
+			"ingredients": [
+				"digIT", "pluttar", "äggula"
+			],
+			"price": "∞"
 		}
 	}
 }
