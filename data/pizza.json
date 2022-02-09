@@ -290,7 +290,7 @@
 				"veg": false,
 				"spicy": true,
 				"ingredients": [
-					"köttärs", "vitlök", "feferoni", "paprika", "lök"
+					"köttärs", "vitlök", "feferoni", "paprika", "lök", "cayennepeppar"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -366,7 +366,7 @@
 					"tomatsås", "ost"
 				],
 				"price": 95,
-				"family_price": 215
+				"family_price": 210
 			},
 			"caruso": {
 				"id": 21,
@@ -488,7 +488,7 @@
 				"veg": true,
 				"spicy": false,
 				"ingredients": [
-					"champinjoner", "kronärtskocka", "oliver", "vitlök", "färska tomater", "paprika", "feferoni"
+					"champinjoner", "kronärtskocka", "oliver", "vitlök", "färska tomater", "paprika", "feferoni", "tomat"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -756,7 +756,7 @@
 				"veg": true,
 				"spicy": false,
 				"ingredients": [
-					"champinjoner", "fetaost", "paprika", "gorgonzolaost", "vitlökssås"
+					"champinjoner", "fårost", "paprika", "gorgonzolaost", "vitlökssås"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -770,7 +770,7 @@
 				"veg": true,
 				"spicy": false,
 				"ingredients": [
-					"färsk basilika", "gorgonzolaost", "mozzarellaost", "fetaost"
+					"färsk basilika", "gorgonzolaost", "mozzarellaost", "fårost"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -828,7 +828,7 @@
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
-					"lufttorkad skinka", "vitlök", "oliver", "färsk basilika", "färska tomater", "lök", "gorgonzolaost", "mozzarellaost", "olivolja"
+					"lufttorkad skinka", "vitlök", "oliver", "färsk basilika", "färska tomater", "lök", "mozzarellaost", "olivolja"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -856,7 +856,7 @@
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
-					"lufttorkad skinka", "vitlök", "oliver", "lök", "färsk basilika", "fetaost", "mozzarellaost", "olivolja"
+					"lufttorkad skinka", "vitlök", "oliver", "lök", "färsk basilika", "fårost", "mozzarellaost", "olivolja"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -900,7 +900,7 @@
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
-					"skinka", "lök", "jalapeño", "kyckling", "köttfärs", "bacon", "oxfilé", "mozzarellaost", "stark vitlökssås"
+					"skinka", "lök", "kyckling", "köttfärs", "bacon", "oxfilé", "mozzarellaost", "stark vitlökssås"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -984,7 +984,7 @@
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
-					"mozzarellaost", "parmaskinka", "salami", "oliver", "vitlök", "soltorkade tomater", "ruccola"
+					"mozzarellaost", "lufttorkad skinka", "salami", "oliver", "vitlök", "soltorkade tomater", "ruccola"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -998,7 +998,7 @@
 				"veg": false,
 				"spicy": false,
 				"ingredients": [
-					"mozzarellaost", "kyckling", "champinjoner", "soltorkade tomater", "pesto", "fetaost", "ruccola"
+					"mozzarellaost", "kyckling", "champinjoner", "soltorkade tomater", "pesto", "fårost", "ruccola"
 				],
 				"hidden_ingredients": [
 					"tomatsås", "ost"
@@ -1040,7 +1040,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"fetaost", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
+				"falafel", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1052,7 +1052,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kebabkött", "fetaost", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
+				"kebabkött", "fårost", "feferoni", "lök", "färska tomater", "gurka", "isbergssallad", "mild kebabsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1078,7 +1078,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"ost", "skinka", "ananas", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"skinka", "ananas", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1090,7 +1090,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "rhode islandsås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1102,7 +1102,7 @@
 			"veg": true,
 			"spicy": false,
 			"ingredients": [
-				"fårost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"fårost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "vitlökssås"
 			],
 			"hidden_ingredients": [
 				"bröd"
@@ -1116,7 +1116,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kebabkött", "pommes frites eller ris"
+				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kebabkött", "pommes frites eller ris", "kebabsås"
 			],
 			"price": 99
 		},
@@ -1134,7 +1134,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kyckling", "pommes frites eller ris"
+				"isbergssallad", "tomat", "gurka", "feferoni", "lök", "kyckling", "pommes frites eller ris", "kebabsås"
 			],
 			"price": 99
 		},
@@ -1175,7 +1175,7 @@
 			"veg": true,
 			"spicy": false,
 			"ingredients": [
-				"pasta", "champinjoner", "tomat", "strimlad feferoni", "fetaost", "lök", "gräddsås", "tomatsås"
+				"pasta", "champinjoner", "tomat", "strimlad feferoni", "fårost", "lök", "gräddsås"
 			],
 			"hidden_ingredients": [
 
@@ -1225,7 +1225,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"ananas", "majs", "gurka", "färska tomater", "isbergssallad", "ost", "skinka", "valfri sås"
+				"ananas", "majs", "gurka", "färska tomater", "isbergssallad", "ost", "skinka", "rhode islandsås"
 			],
 			"price": 89
 		},
@@ -1234,7 +1234,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"kyckling", "champinjoner", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "currysås"
 			],
 			"price": 95
 		},
@@ -1243,7 +1243,7 @@
 			"veg": true,
 			"spicy": false,
 			"ingredients": [
-				"fetaost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"fårost", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "vitlökssås"
 			],
 			"price": 89
 		},
@@ -1252,7 +1252,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"tonfisk", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"tonfisk", "oliver", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "rhode islandsås"
 			],
 			"price": 90
 		},
@@ -1261,7 +1261,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kebabkött", "feferoni", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "valfri sås"
+				"kebabkött", "feferoni", "lök", "majs", "färska tomater", "gurka", "isbergssallad", "kebabsås"
 			],
 			"price": 95
 		},
@@ -1270,7 +1270,7 @@
 			"veg": false,
 			"spicy": false,
 			"ingredients": [
-				"kräftstjärtar", "räkor", "rödlök", "gurka", "färska tomater", "isbergssallad", "valfri sås"
+				"kräftstjärtar", "räkor", "rödlök", "gurka", "färska tomater", "isbergssallad", "kebabsås"
 			],
 			"price": 95
 		}
