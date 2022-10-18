@@ -101,7 +101,8 @@
 			.centralize {}
 		</style>
 
-		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}" on-response="_ajaxReponseUpdated"></iron-ajax>
+		<iron-ajax auto url="../data/pizza.json" handle-as="json" last-response="{{ajaxResponse}}"
+			on-response="_ajaxReponseUpdated"></iron-ajax>
 
 		<div id="header">
 			<img src="/res/pizza.png" alt="pizza <3" />
@@ -110,29 +111,32 @@
 
 		<div id="content">
 			<div id="filter">
-				<sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}" search-term="{{searchTerm}}" alias="[[alias]]"
-				 largest-price="[[largestPrice]]" smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
+				<sannes-filter id="filter" show-pizzas={{showPizzas}} ingredients="{{allIngredients}}"
+					search-term="{{searchTerm}}" alias="[[alias]]" largest-price="[[largestPrice]]"
+					smallest-price="[[smallestPrice]]" sort-by="{{sortBy}}"></sannes-filter>
 			</div>
 			<h2 id="resultHeader" class="hidden">Resultat av filtrering:</h2>
 
 			<div class="centralize">
 				<div id="resultContainer" class="flexContainer hidden">
 					<template is="dom-repeat" items="[[allItems]]">
-						<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]" search-term="[[searchTerm]]"
-						 should-filter alias="[[alias]]"></sannes-item>
+						<sannes-item item-name="[[item.name]]" item-data="[[item.value]]" item-order="[[item.order]]"
+							search-term="[[searchTerm]]" should-filter alias="[[alias]]"></sannes-item>
 					</template>
 				</div>
 			</div>
 
 			<div id="pizzasContainer">
 				<template is="dom-repeat" items="[[_toArray(ajaxResponse.pizzas)]]">
-					<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+					<sannes-group group-name="Pizzagrupp [[item.name]]" group-data="[[item.value]]" alias="[[alias]]">
+					</sannes-group>
 				</template>
 			</div>
 
 			<div id="otherContainer">
 				<template is="dom-repeat" items="[[others]]">
-					<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]"></sannes-group>
+					<sannes-group group-name="[[item.name]]" group-data="[[item.value]]" alias="[[alias]]">
+					</sannes-group>
 				</template>
 			</div>
 		</div>
@@ -152,6 +156,7 @@
 
 		<footer>
 			<h4>Think with Portals ❤</h4>
+			<h5>Prices updated 2022-10-17</h5>
 		</footer>
 
 	</template>
